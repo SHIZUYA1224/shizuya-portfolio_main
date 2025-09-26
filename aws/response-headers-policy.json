@@ -1,0 +1,40 @@
+{
+  "ResponseHeadersPolicyConfig": {
+    "Name": "portfolio-secure-static",
+    "Comment": "Security headers for single-origin VRM/music/video portfolio.",
+    "SecurityHeadersConfig": {
+      "ContentTypeOptions": {
+        "Override": true
+      },
+      "FrameOptions": {
+        "FrameOption": "SAMEORIGIN",
+        "Override": true
+      },
+      "ReferrerPolicy": {
+        "Override": true,
+        "ReferrerPolicy": "strict-origin-when-cross-origin"
+      },
+      "StrictTransportSecurity": {
+        "AccessControlMaxAgeSec": 63072000,
+        "IncludeSubdomains": true,
+        "Preload": true,
+        "Override": true
+      },
+      "XSSProtection": {
+        "ModeBlock": true,
+        "Protection": true,
+        "Override": true
+      }
+    },
+    "CustomHeadersConfig": {
+      "Quantity": 1,
+      "Items": [
+        {
+          "Header": "Permissions-Policy",
+          "Value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), magnetometer=(), payment=(), usb=(), interest-cohort=()",
+          "Override": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Video Reels | Shizuya Kubota</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/themes.css">
+  </head>
+  <body data-page="video">
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Shizuya Kubota Home">
+          <img src="assets/img/logo.svg" alt="Shizuya Kubota" width="128" height="32">
+        </a>
+        <nav class="primary-nav" aria-label="メインナビゲーション">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list">
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="visually-hidden">メニュー</span>
+          </button>
+          <ul id="primary-nav-list">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="vrm.html">VRM</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+      <section class="section" aria-labelledby="video-title">
+        <div class="container">
+          <h1 id="video-title">Video Reels</h1>
+          <p class="lead">Selected cinematography and motion direction, delivered with privacy-respecting embeds that load only on demand.</p>
+          <div id="video-list" class="video-grid" role="list"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span data-year></span> Shizuya Kubota.</p>
+        <a class="inline-link" href="about.html">Contact</a>
+      </div>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/lite-youtube.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Signal Bloom thumbnail</title>
+  <rect width="640" height="360" fill="#111111"/>
+  <g fill="none" stroke="#f5c400" stroke-width="4" opacity="0.9">
+    <circle cx="320" cy="180" r="60"/>
+    <circle cx="320" cy="180" r="110" opacity="0.7"/>
+    <circle cx="320" cy="180" r="160" opacity="0.4"/>
+  </g>
+  <path d="M180 140l40 120 40-80 40 100 40-140 40 120 40-60 40 70 40-130" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
+</svg>

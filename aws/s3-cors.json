@@ -1,0 +1,18 @@
+{
+  "CORSRules": [
+    {
+      "AllowedOrigins": [
+        "https://portfolio.example.com"
+      ],
+      "AllowedMethods": [
+        "GET",
+        "HEAD"
+      ],
+      "AllowedHeaders": [
+        "Authorization"
+      ],
+      "ExposeHeaders": [],
+      "MaxAgeSeconds": 300
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<svg width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Mesh Runner thumbnail</title>
+  <rect width="320" height="320" rx="24" fill="#ffffff"/>
+  <path d="M90 240c20-60 40-90 70-90s50 30 70 90H90Z" fill="#111111" opacity="0.8"/>
+  <circle cx="160" cy="120" r="52" fill="#f5c400" opacity="0.8"/>
+  <rect x="150" y="160" width="20" height="36" fill="#f5c400" opacity="0.5"/>
+</svg>

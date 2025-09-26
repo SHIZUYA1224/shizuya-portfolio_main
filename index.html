@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shizuya Kubota Portfolio</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/themes.css">
+  </head>
+  <body data-page="home">
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Shizuya Kubota Home">
+          <img src="assets/img/logo.svg" alt="Shizuya Kubota" width="128" height="32">
+        </a>
+        <nav class="primary-nav" aria-label="メインナビゲーション">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list">
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="visually-hidden">メニュー</span>
+          </button>
+          <ul id="primary-nav-list">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="vrm.html">VRM</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <p class="eyebrow">Creative Engineer / UI Designer</p>
+          <h1 id="hero-title">Crafting immersive interactive moments across 3D, sound, and film.</h1>
+          <p class="lead">I build human-centered digital experiences that celebrate craft, clarity, and technology. Explore my VRM showcases, custom music players, and film storytelling systems.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="vrm.html">Explore VRM Work</a>
+            <a class="btn secondary" href="music.html">Listen to Music</a>
+          </div>
+        </div>
+      </section>
+      <section class="section" aria-labelledby="section-featured">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="section-featured">Featured Highlights</h2>
+            <p class="section-lead">Selected cross-disciplinary projects integrating real-time 3D, bespoke audio tooling, and cinematic delivery.</p>
+          </div>
+          <div class="cards-grid">
+            <article class="card focus" aria-labelledby="vrm-card-title">
+              <div class="card-body">
+                <p class="card-eyebrow">Real-time Avatar</p>
+                <h3 id="vrm-card-title">Adaptive VRM Showcase</h3>
+                <p class="card-text">Responsive Three.js viewer supporting VRM 0.x and 1.0 avatars. Lighting tuned for storytelling clarity.</p>
+              </div>
+              <footer class="card-footer">
+                <a class="inline-link" href="vrm.html">View details</a>
+              </footer>
+            </article>
+            <article class="card" aria-labelledby="music-card-title">
+              <div class="card-body">
+                <p class="card-eyebrow">Audio Systems</p>
+                <h3 id="music-card-title">Custom Audio Player Toolkit</h3>
+                <p class="card-text">Accessible HTML5 player with keyboard-first controls, dynamic theming, and waveform-inspired UI accents.</p>
+              </div>
+              <footer class="card-footer">
+                <a class="inline-link" href="music.html">Listen now</a>
+              </footer>
+            </article>
+            <article class="card" aria-labelledby="video-card-title">
+              <div class="card-body">
+                <p class="card-eyebrow">Cinematic</p>
+                <h3 id="video-card-title">Lightweight Video Launchpads</h3>
+                <p class="card-text">Performance-aware YouTube embeds with privacy-enhanced mode and graceful degradation.</p>
+              </div>
+              <footer class="card-footer">
+                <a class="inline-link" href="video.html">Watch reels</a>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section section-dark" aria-labelledby="section-approach">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="section-approach">Design + Engineering Approach</h2>
+          </div>
+          <div class="approach-grid">
+            <article>
+              <h3>Precision Workflows</h3>
+              <p>Detail-oriented prototyping with focus on latency, color pipelines, and accessible interactions across devices.</p>
+            </article>
+            <article>
+              <h3>Responsible Tooling</h3>
+              <p>Toolchains designed for deterministic builds, portable assets, and secure deployment to first-party infrastructure.</p>
+            </article>
+            <article>
+              <h3>People-first</h3>
+              <p>Inclusive narratives with clear reading order, keyboard support, and calm motion respecting user preferences.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span data-year></span> Shizuya Kubota. Built with care in Tokyo.</p>
+        <a class="inline-link" href="about.html">Contact &amp; profile</a>
+      </div>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

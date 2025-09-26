@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRM Showcase | Shizuya Kubota</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/themes.css">
+  </head>
+  <body data-page="vrm">
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Shizuya Kubota Home">
+          <img src="assets/img/logo.svg" alt="Shizuya Kubota" width="128" height="32">
+        </a>
+        <nav class="primary-nav" aria-label="メインナビゲーション">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list">
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="visually-hidden">メニュー</span>
+          </button>
+          <ul id="primary-nav-list">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="vrm.html">VRM</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+      <section class="section" aria-labelledby="vrm-intro">
+        <div class="container">
+          <h1 id="vrm-intro">VRM Showcase</h1>
+          <p class="lead">Real-time avatar gallery supporting VRM 0.x and 1.0 with calibrated lighting and responsive controls.</p>
+          <div class="vrm-layout">
+            <aside class="vrm-sidebar" aria-label="モデル一覧">
+              <h2 class="sidebar-title">Models</h2>
+              <div id="vrm-model-list" class="vrm-model-list" role="tablist" aria-label="VRM models"></div>
+            </aside>
+            <div class="vrm-viewer">
+              <div class="canvas-wrapper">
+                <canvas id="vrm-canvas" aria-label="VRM viewer" role="img"></canvas>
+                <div id="vrm-loading" class="loading-overlay" hidden>
+                  <div class="loading-indicator" aria-hidden="true"></div>
+                  <p>Loading model…</p>
+                </div>
+              </div>
+              <div class="vrm-meta" aria-live="polite">
+                <h2 id="vrm-model-name">Select a model</h2>
+                <p id="vrm-model-description">Choose an avatar to inspect mesh silhouette, facial rig, and outfit detail.</p>
+                <dl class="vrm-attributes">
+                  <div>
+                    <dt>Version</dt>
+                    <dd id="vrm-model-version">–</dd>
+                  </div>
+                  <div>
+                    <dt>Rig</dt>
+                    <dd id="vrm-model-rig">–</dd>
+                  </div>
+                </dl>
+                <p class="vrm-hint">Tip: drag to orbit, scroll to zoom, right-click to pan. Lighting presets maintain readable contrast.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span data-year></span> Shizuya Kubota.</p>
+        <a class="inline-link" href="about.html">Contact</a>
+      </div>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/vrm-viewer.js"></script>
+  </body>
+</html>

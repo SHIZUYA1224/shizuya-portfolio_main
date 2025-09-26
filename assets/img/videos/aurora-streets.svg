@@ -1,0 +1,8 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Aurora Streets thumbnail</title>
+  <rect width="640" height="360" fill="#0b0d14"/>
+  <path d="M0 240c80-40 160-60 240-20s160 40 240 10 160-70 160-70v200H0Z" fill="#141b2f"/>
+  <path d="M60 120h60v180H60zM150 80h60v220h-60zM460 100h60v200h-60z" fill="#f5c400" opacity="0.6"/>
+  <circle cx="500" cy="120" r="48" fill="#f5c400" opacity="0.35"/>
+  <rect x="280" y="140" width="80" height="60" rx="8" fill="#ffffff" opacity="0.08"/>
+</svg>

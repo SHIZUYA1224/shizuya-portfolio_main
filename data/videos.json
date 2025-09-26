@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dQw4w9WgXcQ",
+    "title": "Aurora Streets",
+    "year": "2023",
+    "duration": "02:14",
+    "description": "Hybrid live-action and particle rendered cityscapes exploring reflective lighting.",
+    "thumbnail": "assets/img/videos/aurora-streets.svg"
+  },
+  {
+    "id": "5qap5aO4i9A",
+    "title": "Resonant Atlas",
+    "year": "2022",
+    "duration": "03:45",
+    "description": "Narrative short blending volumetric capture with graphic typography.",
+    "thumbnail": "assets/img/videos/resonant-atlas.svg"
+  },
+  {
+    "id": "w-XQO77wvhQ",
+    "title": "Signal Bloom",
+    "year": "2021",
+    "duration": "01:58",
+    "description": "Performance film where motion tracked dancers drive real-time shaders.",
+    "thumbnail": "assets/img/videos/signal-bloom.svg"
+  }
+]

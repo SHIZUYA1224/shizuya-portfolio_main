@@ -1,0 +1,10 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Amber Skies cover art</title>
+  <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#fff7cc"/>
+    <stop offset="100%" stop-color="#ffe082"/>
+  </linearGradient>
+  <rect width="600" height="600" fill="#111111"/>
+  <circle cx="300" cy="260" r="200" fill="url(#grad)" stroke="#f5c400" stroke-width="6"/>
+  <path d="M60 420h480c-60 80-160 120-240 120S120 500 60 420Z" fill="#ffffff15"/>
+</svg>

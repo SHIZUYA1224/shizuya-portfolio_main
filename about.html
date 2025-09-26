@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About | Shizuya Kubota</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/themes.css">
+  </head>
+  <body data-page="about">
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Shizuya Kubota Home">
+          <img src="assets/img/logo.svg" alt="Shizuya Kubota" width="128" height="32">
+        </a>
+        <nav class="primary-nav" aria-label="メインナビゲーション">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list">
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="nav-toggle-line" aria-hidden="true"></span>
+            <span class="visually-hidden">メニュー</span>
+          </button>
+          <ul id="primary-nav-list">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="vrm.html">VRM</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+      <section class="section" aria-labelledby="about-title">
+        <div class="container narrow">
+          <h1 id="about-title">About Shizuya Kubota</h1>
+          <p class="lead">Senior web engineer and UI designer focused on immersive storytelling, human-centered interaction, and scalable deployment pipelines.</p>
+          <div class="about-grid">
+            <div>
+              <h2>Profile</h2>
+              <p>With a background in computational media, I create tactile experiences that connect craft across 3D avatars, bespoke audio tooling, and film-centric publishing. I specialize in building resilient systems that translate design intent into production-ready realities.</p>
+              <p>Recent collaborations span animation studios, music platforms, and cloud streaming teams, with an emphasis on performance budgets, accessibility, and security.</p>
+            </div>
+            <div>
+              <h2>Capabilities</h2>
+              <ul class="capability-list">
+                <li>Design systems and design tokens</li>
+                <li>Three.js / WebGL avatar pipelines</li>
+                <li>Audio UX: playback, spatialization, mastering</li>
+                <li>Video publishing and adaptive streaming</li>
+                <li>AWS static delivery &amp; infrastructure automation</li>
+              </ul>
+              <h2>Contact</h2>
+              <ul class="contact-list">
+                <li><a class="inline-link" href="mailto:hello@kubotashizuya.com">hello@kubotashizuya.com</a></li>
+                <li><a class="inline-link" href="tel:+81300001234">+81 3-0000-1234</a></li>
+              </ul>
+              <h2>Social</h2>
+              <ul class="social-list">
+                <li><a href="https://github.com/kubotashizuya" class="social-link"><img src="assets/img/icon-github.svg" width="24" height="24" alt="GitHub">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/kubotashizuya" class="social-link"><img src="assets/img/icon-linkedin.svg" width="24" height="24" alt="LinkedIn">LinkedIn</a></li>
+                <li><a href="https://twitter.com/kubotashizuya" class="social-link"><img src="assets/img/icon-twitter.svg" width="24" height="24" alt="Twitter">Twitter</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span data-year></span> Shizuya Kubota.</p>
+        <a class="inline-link" href="mailto:hello@kubotashizuya.com">Email me</a>
+      </div>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Build/outputs (none used, but keep tidy)
+*.log
+final_output.txt
