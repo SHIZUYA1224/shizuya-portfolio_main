@@ -150,12 +150,14 @@
 
 .track-meta h3 {
   margin: 0 0 10px;
-  font-size: 1.18rem;
+  font-size: 1.22rem;
+  font-family: var(--font-display);
 }
 
 .track-meta p {
   margin: 0;
-  color: var(--color-muted);
+  color: rgba(17, 17, 37, 0.65);
+  line-height: 1.7;
 }
 
 .audio-player {
@@ -360,6 +362,7 @@
 .vrm-list-item.is-active {
   border-color: var(--color-primary);
   background: linear-gradient(135deg, rgba(245, 196, 0, 0.22), rgba(255, 255, 255, 0.9));
+  transform: translateX(4px);
 }
 
 .vrm-thumb {
@@ -383,7 +386,8 @@
 }
 
 .vrm-list-title {
-  font-weight: 600;
+  font-weight: 700;
+  font-family: var(--font-display);
 }
 
 .vrm-list-sub {
