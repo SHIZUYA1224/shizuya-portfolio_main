@@ -114,8 +114,10 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--transition-medium), visibility var(--transition-fast);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 48px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
 }
 
 .nav-overlay[data-state="open"] {
@@ -127,15 +129,15 @@
 .nav-overlay__inner {
   position: relative;
   isolation: isolate;
-  width: min(100% - 56px, 540px);
-  padding: 48px 32px;
+  width: min(100% - 48px, 520px);
+  padding: 40px 28px;
   border-radius: 32px;
-  background: rgba(12, 12, 20, 0.55);
-  box-shadow: 0 50px 120px -60px rgba(0, 0, 0, 0.72);
+  background: rgba(12, 12, 20, 0.58);
+  box-shadow: 0 40px 120px -60px rgba(0, 0, 0, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.09);
   overflow: hidden;
   display: grid;
-  gap: 36px;
+  gap: 32px;
   text-align: left;
   color: #f6f7fb;
 }
@@ -177,7 +179,7 @@
 
 .nav-overlay__list li {
   position: relative;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
 .nav-overlay__list li::before {
@@ -186,7 +188,7 @@
   inset: auto auto 0 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.8rem, 12vw, 6.6rem);
+  font-size: clamp(2.6rem, 11vw, 6rem);
   line-height: 0.8;
   color: rgba(255, 255, 255, 0.08);
   transform: translateY(55%);
@@ -200,7 +202,7 @@
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-size: clamp(2.2rem, 6.5vw, 3.2rem);
   font-weight: 700;
   color: #f7f7fb;
   text-transform: uppercase;
@@ -372,8 +374,10 @@ body[data-page="home"] .cards-grid .card {
 .music-hero__visual {
   position: relative;
   min-height: 320px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 48px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
 }
 
 .music-hero__visual img {
@@ -453,8 +457,10 @@ body[data-page="home"] .cards-grid .card {
   height: 70px;
   border-radius: 50%;
   background: var(--color-accent);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 48px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
   box-shadow: 0 24px 48px -24px rgba(17, 17, 17, 0.48);
   transition: transform var(--transition-fast), box-shadow var(--transition-medium), background var(--transition-medium);
 }
@@ -559,7 +565,7 @@ body[data-page="home"] .cards-grid .card {
 
 .vrm-layout {
   display: grid;
-  gap: 36px;
+  gap: 32px;
   grid-template-columns: minmax(240px, 320px) 1fr;
   align-items: start;
 }
@@ -609,8 +615,10 @@ body[data-page="home"] .cards-grid .card {
 .loading-overlay {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 48px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
   gap: 12px;
   background: rgba(255, 255, 255, 0.85);
   color: var(--color-text);
@@ -778,7 +786,7 @@ body[data-page="home"] .cards-grid .card {
   .music-hero {
     grid-template-columns: 1fr;
     padding: 36px;
-    gap: 36px;
+    gap: 32px;
   }
 
   .music-hero__visual {
