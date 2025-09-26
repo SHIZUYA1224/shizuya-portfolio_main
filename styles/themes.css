@@ -2,7 +2,7 @@ body[data-page="vrm"] .site-header,
 body[data-page="music"] .site-header,
 body[data-page="video"] .site-header,
 body[data-page="about"] .site-header {
-  background: rgba(247, 248, 251, 0.76);
+  background: rgba(252, 252, 255, 0.86);
 }
 
 body[data-page="vrm"] .card,

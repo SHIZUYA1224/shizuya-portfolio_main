@@ -17,36 +17,63 @@ export const initNavigationHighlight = () => {
 export const initMobileNav = () => {
   const nav = document.querySelector('.primary-nav');
   const toggle = document.querySelector('.nav-toggle');
-  const list = document.querySelector('.primary-nav ul');
-  if (!nav || !toggle || !list) {
+  const overlay = document.querySelector('.nav-overlay');
+  const inlineList = document.querySelector('.nav-inline');
+  if (!nav || !toggle || !overlay) {
     return;
   }
 
   const closeMenu = () => {
     toggle.setAttribute('aria-expanded', 'false');
-    nav.setAttribute('aria-expanded', 'false');
-    list.classList.remove('is-open');
+    nav.classList.remove('is-open');
+    overlay.dataset.state = 'closed';
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('nav-open');
+  };
+
+  const openMenu = () => {
+    toggle.setAttribute('aria-expanded', 'true');
+    nav.classList.add('is-open');
+    overlay.dataset.state = 'open';
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('nav-open');
+    overlay.querySelector('a')?.focus({ preventScroll: true });
   };
 
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    const next = !expanded;
-    toggle.setAttribute('aria-expanded', String(next));
-    nav.setAttribute('aria-expanded', String(next));
-    list.classList.toggle('is-open', next);
-    if (next) {
-      list.querySelector('a')?.focus({ preventScroll: true });
+    if (expanded) {
+      closeMenu();
+    } else {
+      openMenu();
     }
   });
 
-  list.addEventListener('click', (event) => {
+  overlay.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      closeMenu();
+      return;
+    }
+    if (event.target === overlay) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && overlay.dataset.state === 'open') {
+      closeMenu();
+      toggle.focus({ preventScroll: true });
+    }
+  });
+
+  inlineList?.addEventListener('click', (event) => {
     if (event.target instanceof HTMLAnchorElement) {
       closeMenu();
     }
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 720) {
+    if (window.innerWidth > 720 && overlay.dataset.state === 'open') {
       closeMenu();
     }
   });

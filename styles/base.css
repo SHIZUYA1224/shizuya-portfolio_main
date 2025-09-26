@@ -93,6 +93,10 @@ body {
   flex-direction: column;
 }
 
+body.nav-open {
+  overflow: hidden;
+}
+
 .site-main {
   flex: 1 0 auto;
 }
