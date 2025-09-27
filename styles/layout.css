@@ -359,7 +359,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.45) 55%, rgba(255, 255, 255, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0.78) 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -444,6 +444,29 @@ body[data-page="home"] .hero__scroll { animation-delay: 320ms; }
 body[data-page="home"] .cards-grid .card {
   animation: riseIn 1s var(--transition-medium) 420ms;
   animation-fill-mode: both;
+}
+
+@media (min-width: 1024px) {
+  .hero__container {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 160px 0 180px;
+  }
+
+  .hero__content {
+    max-width: 560px;
+    padding: 56px;
+    margin-left: clamp(48px, 10vw, 160px);
+    margin-right: clamp(24px, 6vw, 96px);
+  }
+
+  .hero__scroll {
+    align-self: flex-end;
+    margin-right: clamp(48px, 10vw, 160px);
+  }
 }
 
 .music-hero {
@@ -937,6 +960,14 @@ body[data-page="home"] .cards-grid .card {
   .video-grid,
   .about-grid {
     gap: 24px;
+  }
+
+  .hero--work {
+    background-position: 50% 20%;
+  }
+
+  .hero::before {
+    background: linear-gradient(200deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.24) 75%, rgba(255, 255, 255, 0.5) 100%);
   }
 }
 
