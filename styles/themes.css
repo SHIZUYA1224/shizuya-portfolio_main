@@ -11,10 +11,15 @@ body[data-page="video"] .card {
   border: 1px solid rgba(17, 17, 17, 0.05);
 }
 
-.primary-nav a[aria-current="page"] {
+.nav-inline a[aria-current="page"] {
   font-weight: 700;
   background: rgba(17, 17, 37, 0.08);
   color: var(--color-accent);
+}
+
+.nav-overlay__list a[aria-current="page"] {
+  font-weight: 700;
+  background: transparent;
 }
 
 body[data-page="about"] .section {

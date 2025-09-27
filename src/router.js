@@ -6,10 +6,13 @@ export const initNavigationHighlight = () => {
   links.forEach((link) => {
     const href = normalizeHref(link.getAttribute('href') || '');
     const isActive = page === 'home' ? href.endsWith('index.html') : href.includes(`${page}.html`);
+    const listItem = link.closest('li');
     if (isActive) {
       link.setAttribute('aria-current', 'page');
+      listItem?.setAttribute('data-active', 'true');
     } else {
       link.removeAttribute('aria-current');
+      listItem?.removeAttribute('data-active');
     }
   });
 };

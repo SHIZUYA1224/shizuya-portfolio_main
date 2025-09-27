@@ -212,6 +212,16 @@
   transform: translateY(55%);
   pointer-events: none;
   mix-blend-mode: overlay;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-overlay__list li[data-active]::after {
+  background: rgba(245, 196, 0, 0.12);
+}
+
+.nav-overlay__list li[data-active]::before {
+  opacity: 0;
+  transform: translateY(90%);
 }
 
 .nav-overlay__list a {
@@ -231,11 +241,21 @@
   text-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
 }
 
+.nav-overlay__list a[aria-current="page"] {
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+}
+
 .nav-overlay__list a::after {
   content: "→";
   font-size: clamp(1.4rem, 4vw, 2rem);
   opacity: 0.6;
   transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav-overlay__list a[aria-current="page"]::after {
+  opacity: 1;
+  transform: translateX(4px);
 }
 
 .nav-overlay__list a:hover,
