@@ -114,10 +114,12 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity var(--transition-medium), visibility var(--transition-fast);
+  box-sizing: border-box;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(env(safe-area-inset-top, 0px) + 48px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
+  padding: calc(env(safe-area-inset-top, 0px) + 32px) calc(env(safe-area-inset-right, 0px) + 24px) calc(env(safe-area-inset-bottom, 0px) + 32px) calc(env(safe-area-inset-left, 0px) + 24px);
 }
 
 .nav-overlay[data-state="open"] {
@@ -130,12 +132,13 @@
   position: relative;
   isolation: isolate;
   width: min(100% - 48px, 520px);
+  max-height: calc(100vh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 56px);
+  overflow: auto;
   padding: 40px 28px;
   border-radius: 32px;
   background: rgba(12, 12, 20, 0.58);
   box-shadow: 0 40px 120px -60px rgba(0, 0, 0, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.09);
-  overflow: hidden;
   display: grid;
   gap: 32px;
   text-align: left;
