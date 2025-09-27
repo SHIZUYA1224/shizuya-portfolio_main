@@ -216,7 +216,8 @@
 }
 
 .nav-overlay__list li[data-active]::after {
-  background: rgba(245, 196, 0, 0.12);
+  background: linear-gradient(135deg, rgba(245, 196, 0, 0.2), rgba(108, 142, 255, 0.16));
+  box-shadow: 0 18px 36px -22px rgba(108, 142, 255, 0.45);
 }
 
 .nav-overlay__list li[data-active]::before {
@@ -230,7 +231,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 18px 18px;
+  padding: 18px 24px 18px 32px;
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 6.5vw, 3.2rem);
   font-weight: 700;
@@ -242,8 +243,28 @@
 }
 
 .nav-overlay__list a[aria-current="page"] {
-  color: var(--color-primary);
-  letter-spacing: 0.04em;
+  color: #f7f7fb;
+  letter-spacing: 0.08em;
+}
+
+.nav-overlay__list a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  width: 6px;
+  height: 58%;
+  border-radius: 999px;
+  background: linear-gradient(190deg, rgba(245, 196, 0, 0.9) 0%, rgba(108, 142, 255, 0.78) 100%);
+  opacity: 0;
+  transform: translateY(-50%) scaleY(0.5);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 14px 28px -16px rgba(108, 142, 255, 0.56);
+}
+
+.nav-overlay__list a[aria-current="page"]::before {
+  opacity: 1;
+  transform: translateY(-50%) scaleY(1);
 }
 
 .nav-overlay__list a::after {
@@ -256,6 +277,7 @@
 .nav-overlay__list a[aria-current="page"]::after {
   opacity: 1;
   transform: translateX(4px);
+  color: var(--color-primary);
 }
 
 .nav-overlay__list a:hover,

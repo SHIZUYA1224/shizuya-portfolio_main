@@ -20,6 +20,7 @@ body[data-page="video"] .card {
 .nav-overlay__list a[aria-current="page"] {
   font-weight: 700;
   background: transparent;
+  color: inherit;
 }
 
 body[data-page="about"] .section {
