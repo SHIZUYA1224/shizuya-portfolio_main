@@ -119,6 +119,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  touch-action: none;
   padding: calc(env(safe-area-inset-top, 0px) + 32px) calc(env(safe-area-inset-right, 0px) + 24px) calc(env(safe-area-inset-bottom, 0px) + 32px) calc(env(safe-area-inset-left, 0px) + 24px);
 }
 
@@ -132,8 +134,6 @@
   position: relative;
   isolation: isolate;
   width: min(100% - 48px, 520px);
-  max-height: calc(100vh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 56px);
-  overflow: auto;
   padding: 40px 28px;
   border-radius: 32px;
   background: rgba(12, 12, 20, 0.58);
@@ -182,7 +182,22 @@
 
 .nav-overlay__list li {
   position: relative;
-  padding: 10px 0;
+  padding: 12px 0;
+}
+
+.nav-overlay__list li::after {
+  content: "";
+  position: absolute;
+  inset: 4px 0;
+  border-radius: 32px;
+  background: rgba(245, 196, 0, 0);
+  transition: background var(--transition-fast);
+  pointer-events: none;
+}
+
+.nav-overlay__list li:hover::after,
+.nav-overlay__list li:focus-within::after {
+  background: rgba(245, 196, 0, 0.12);
 }
 
 .nav-overlay__list li::before {
@@ -204,6 +219,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 18px 18px;
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 6.5vw, 3.2rem);
   font-weight: 700;
