@@ -2,19 +2,19 @@ body[data-page="vrm"] .site-header,
 body[data-page="music"] .site-header,
 body[data-page="video"] .site-header,
 body[data-page="about"] .site-header {
-  background: rgba(252, 252, 255, 0.86);
+  background: rgba(255, 255, 255, 0.94);
 }
 
 body[data-page="vrm"] .card,
 body[data-page="music"] .card,
 body[data-page="video"] .card {
-  border: 1px solid rgba(17, 17, 17, 0.05);
+  border: 1px solid rgba(50, 72, 81, 0.12);
 }
 
 .nav-inline a[aria-current="page"] {
   font-weight: 700;
-  background: rgba(17, 17, 37, 0.08);
-  color: var(--color-accent);
+  background: rgba(50, 72, 81, 0.08);
+  color: var(--color-primary);
 }
 
 .nav-overlay__list a[aria-current="page"] {
@@ -30,7 +30,7 @@ body[data-page="about"] .section {
 .track-card:focus-within,
 .video-card:focus-within,
 .vrm-list-item:focus-visible {
-  outline: 2px solid rgba(245, 196, 0, 0.6);
+  outline: 2px solid rgba(134, 172, 65, 0.6);
   outline-offset: 4px;
 }
 

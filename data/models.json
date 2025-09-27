@@ -4,7 +4,7 @@
     "name": "Atelier Scout",
     "versionLabel": "VRM 1.0",
     "rig": "Humanoid Biped",
-    "description": "Utility jacket layered with emissive trims and soft subsurface skin shading.",
+    "description": "エミッシブのトリムを配したユーティリティージャケットと、柔らかなサブサーフェイススキンを備えたアバター。",
     "thumbnail": "assets/img/vrm/atelier-scout.svg",
     "src": "assets/vrm/atelier-scout.vrm"
   }
