@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600&display=swap');
+
 :root {
   color-scheme: light;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  font-family: "Rajdhani", "Noto Sans JP", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
   line-height: 1.65;
   font-size: 16px;
-  --color-bg: #f7f8fb;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f2f3f7;
-  --color-text: #111111;
-  --color-muted: #5d6070;
-  --color-border: rgba(17, 17, 17, 0.08);
-  --color-primary: #f5c400;
-  --color-primary-dark: #b08900;
-  --color-accent: #1f1f25;
+  --color-bg: #f3f5ff;
+  --color-surface: #fdfdff;
+  --color-surface-muted: #eef1ff;
+  --color-text: #0a0c22;
+  --color-muted: #5b5f80;
+  --color-border: rgba(32, 44, 128, 0.14);
+  --color-primary: #66a6ff;
+  --color-primary-dark: #1f74ff;
+  --color-accent: #141633;
   --shadow-card: 0 20px 36px -18px rgba(17, 17, 17, 0.35);
   --shadow-soft: 0 12px 32px rgba(17, 17, 17, 0.12);
   --radius-xl: 30px;
@@ -21,7 +23,7 @@
   --container-max: 1180px;
   --transition-fast: 140ms ease;
   --transition-medium: 220ms cubic-bezier(0.32, 0.01, 0.25, 1);
-  --font-display: "Inter", "SF Compact Display", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Orbitron", "Rajdhani", "Noto Sans JP", "Inter", system-ui, sans-serif;
 }
 
 * {
@@ -32,9 +34,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at 20% -10%, rgba(245, 196, 0, 0.08), transparent 45%),
-    radial-gradient(circle at 90% 10%, rgba(31, 31, 37, 0.08), transparent 55%),
-    var(--color-bg);
+  background: radial-gradient(circle at 10% -10%, rgba(102, 166, 255, 0.22), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(31, 31, 55, 0.18), transparent 60%),
+    linear-gradient(135deg, rgba(243, 245, 255, 1), rgba(231, 236, 255, 1));
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

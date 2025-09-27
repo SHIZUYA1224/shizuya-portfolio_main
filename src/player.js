@@ -84,7 +84,7 @@ const setActiveTrack = (state) => {
     hero.description.textContent = state.track.description;
   }
   if (hero.details) {
-    hero.details.textContent = state.track.year ? `${state.track.year} · Studio composition` : 'Original composition';
+    hero.details.textContent = state.track.year ? `${state.track.year} · スタジオ制作` : 'オリジナル楽曲';
   }
   syncHeroTime(state);
   updateHeroPlaybackState();
