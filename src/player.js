@@ -49,12 +49,6 @@ const updateHeroPlaybackState = () => {
   hero.play.setAttribute('aria-label', isPlaying ? '一時停止' : '再生');
 };
 
-const updateButtonState = (state, playing) => {
-  state.button.dataset.state = playing ? 'pause' : 'play';
-  state.button.innerHTML = playing ? '⏸' : '▶';
-  state.button.setAttribute('aria-label', playing ? '一時停止' : '再生');
-};
-
 const syncHeroTime = (state) => {
   if (!activeTrack || state !== activeTrack) return;
   if (!hero.seek || !hero.current || !hero.duration) return;
@@ -120,11 +114,9 @@ const startPulse = () => {
 
 const playTrack = (state) => {
   if (currentlyPlaying && currentlyPlaying !== state) {
-    updateButtonState(currentlyPlaying, false);
     currentlyPlaying.audio.pause();
   }
   setActiveTrack(state);
-  updateButtonState(state, true);
   state.audio.play();
   currentlyPlaying = state;
   updateHeroPlaybackState();
@@ -133,7 +125,6 @@ const playTrack = (state) => {
 
 const pauseTrack = (state) => {
   state.audio.pause();
-  updateButtonState(state, false);
   if (currentlyPlaying === state) {
     currentlyPlaying = null;
     stopPulse();
@@ -176,88 +167,24 @@ const createTrackCard = (track) => {
 
   media.append(coverWrapper, meta);
 
-  const player = document.createElement('div');
-  player.className = 'audio-player';
-
-  const controls = document.createElement('div');
-  controls.className = 'audio-controls';
-
-  const button = document.createElement('button');
-  button.className = 'audio-button';
-  button.type = 'button';
-  button.innerHTML = '▶';
-  button.dataset.state = 'play';
-  button.setAttribute('aria-label', '再生');
-
-  const progressWrapper = document.createElement('div');
-  progressWrapper.className = 'progress-wrapper';
-
-  const currentTimeEl = document.createElement('span');
-  currentTimeEl.className = 'time-display';
-  currentTimeEl.textContent = '0:00';
-
-  const progress = document.createElement('input');
-  progress.className = 'progress';
-  progress.type = 'range';
-  progress.min = 0;
-  progress.max = 1;
-  progress.step = 0.001;
-  progress.value = 0;
-  progress.setAttribute('aria-label', `${track.title} のシークバー`);
-  progress.dataset.seeking = 'false';
-
-  const durationEl = document.createElement('span');
-  durationEl.className = 'time-display';
-  durationEl.textContent = '0:00';
-
-  progressWrapper.append(currentTimeEl, progress, durationEl);
-
-  const volumeWrapper = document.createElement('div');
-  volumeWrapper.className = 'volume-wrapper';
-
-  const volumeLabel = document.createElement('span');
-  volumeLabel.textContent = 'Vol';
-  volumeLabel.className = 'visually-hidden';
-
-  const volume = document.createElement('input');
-  volume.className = 'volume-range';
-  volume.type = 'range';
-  volume.min = 0;
-  volume.max = 1;
-  volume.step = 0.05;
-  volume.value = 0.8;
-  volume.setAttribute('aria-label', `${track.title} のボリューム`);
-
-  volumeWrapper.append(volumeLabel, volume);
-
-  controls.append(button, progressWrapper, volumeWrapper);
-  player.append(controls);
-
   const audio = new Audio(track.audio);
   audio.preload = 'metadata';
-  audio.volume = parseFloat(volume.value);
+  audio.volume = 0.85;
 
   const state = {
     track,
     article,
     audio,
-    button,
-    progress,
-    currentTimeEl,
-    durationEl,
-    volume,
   };
 
   audio.addEventListener('loadedmetadata', () => {
-    durationEl.textContent = formatTime(audio.duration);
     syncHeroTime(state);
   });
 
   audio.addEventListener('timeupdate', () => {
-    if (progress.dataset.seeking !== 'true') {
-      progress.value = (audio.currentTime / audio.duration) || 0;
+    if (currentlyPlaying !== state) {
+      return;
     }
-    currentTimeEl.textContent = formatTime(audio.currentTime);
     syncHeroTime(state);
   });
 
@@ -267,69 +194,38 @@ const createTrackCard = (track) => {
 
   audio.addEventListener('pause', () => {
     if (currentlyPlaying === state) {
-      updateButtonState(state, false);
       currentlyPlaying = null;
       stopPulse();
       updateHeroPlaybackState();
     }
   });
 
-  button.addEventListener('click', () => {
-    if (state.audio.paused) {
-      playTrack(state);
-    } else {
-      pauseTrack(state);
+  const activateTrack = () => {
+    if (currentlyPlaying && currentlyPlaying !== state) {
+      pauseTrack(currentlyPlaying);
     }
-  });
-
-  const setSeeking = (flag) => {
-    progress.dataset.seeking = flag ? 'true' : 'false';
+    setActiveTrack(state);
+    state.audio.pause();
+    state.audio.currentTime = 0;
+    syncHeroTime(state);
   };
 
-  progress.addEventListener('input', () => {
-    const seekTime = parseFloat(progress.value) * audio.duration;
-    if (Number.isFinite(seekTime)) {
-      audio.currentTime = seekTime;
-    }
+  article.addEventListener('click', () => {
+    activateTrack();
   });
 
-  progress.addEventListener('pointerdown', () => setSeeking(true));
-  progress.addEventListener('pointerup', () => setSeeking(false));
-  progress.addEventListener('pointercancel', () => setSeeking(false));
-  progress.addEventListener('mousedown', () => setSeeking(true));
-  progress.addEventListener('mouseup', () => setSeeking(false));
-  progress.addEventListener('touchstart', () => setSeeking(true), { passive: true });
-  progress.addEventListener('touchend', () => setSeeking(false));
-  progress.addEventListener('blur', () => setSeeking(false));
-
-  volume.addEventListener('input', () => {
-    audio.volume = parseFloat(volume.value);
-  });
-
-  const handleKeyboard = (event) => {
-    if (event.key === ' ' || event.key === 'Enter') {
+  article.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      button.click();
-    }
-    if (event.key === 'ArrowRight') {
-      audio.currentTime = Math.min(audio.currentTime + 5, audio.duration);
-    }
-    if (event.key === 'ArrowLeft') {
-      audio.currentTime = Math.max(audio.currentTime - 5, 0);
-    }
-  };
-
-  article.addEventListener('keydown', handleKeyboard);
-  article.addEventListener('click', (event) => {
-    if (!event.target.closest('.audio-controls')) {
-      setActiveTrack(state);
+      activateTrack();
+      hero.play?.focus({ preventScroll: true });
     }
   });
 
   article.addEventListener('focusin', () => setActiveTrack(state));
 
   trackStates.push(state);
-  article.append(media, player);
+  article.append(media);
   return state;
 };
 
