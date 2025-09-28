@@ -574,7 +574,8 @@ body[data-page="home"] .cards-grid .card {
 
 .music-hero__controls {
   display: grid;
-  gap: 16px;
+  grid-template-columns: auto minmax(220px, 1fr) auto;
+  gap: 18px;
   align-items: center;
 }
 
@@ -667,6 +668,7 @@ body[data-page="home"] .cards-grid .card {
   display: flex;
   align-items: center;
   gap: 14px;
+  justify-content: flex-end;
 }
 
 .music-hero__volume-icon {
@@ -688,6 +690,7 @@ body[data-page="home"] .cards-grid .card {
 
 .music-hero__volume-slider {
   flex: 1;
+  max-width: 220px;
   appearance: none;
   height: 8px;
   border-radius: 999px;
@@ -849,7 +852,7 @@ body[data-page="home"] .cards-grid .card {
 .track-grid {
   display: grid;
   gap: 28px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   width: 100%;
 }
 
@@ -889,6 +892,8 @@ body[data-page="home"] .cards-grid .card {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(50, 72, 81, 0.12);
   box-shadow: 0 22px 48px -24px rgba(50, 72, 81, 0.28);
+  width: min(100%, 960px);
+  margin: 0 auto;
 }
 
 .now-playing[data-state='idle'] {
@@ -943,7 +948,7 @@ body[data-page="home"] .cards-grid .card {
 
 .now-playing__controls {
   display: grid;
-  grid-template-columns: auto auto minmax(160px, 320px) auto;
+  grid-template-columns: auto minmax(48px, auto) minmax(220px, 1fr) minmax(48px, auto);
   gap: 12px;
   align-items: center;
 }
@@ -955,6 +960,7 @@ body[data-page="home"] .cards-grid .card {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
   position: relative;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  justify-self: center;
 }
 
 .now-playing__play::before {
@@ -1256,6 +1262,20 @@ body[data-page="home"] .cards-grid .card {
   .video-grid,
   .about-grid {
     gap: 24px;
+  }
+
+  .music-hero__controls {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .music-hero__volume {
+    justify-content: stretch;
+  }
+
+  .music-hero__volume-slider {
+    max-width: none;
+    width: 100%;
   }
 
   .hero--work {

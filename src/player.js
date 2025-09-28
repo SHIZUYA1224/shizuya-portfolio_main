@@ -147,6 +147,8 @@ const setActiveTrack = (state) => {
   if (nowPlaying.description) {
     nowPlaying.description.textContent = state.track.year ? `${state.track.year} · ${state.track.description}` : state.track.description;
   }
+  if (nowPlaying.current) nowPlaying.current.textContent = '0:00';
+  if (nowPlaying.duration) nowPlaying.duration.textContent = '0:00';
   if (nowPlaying.container) {
     nowPlaying.container.dataset.state = 'ready';
   }
