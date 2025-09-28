@@ -113,6 +113,10 @@ body.nav-open {
   flex: 1 0 auto;
 }
 
+body[data-page="music"] .site-main {
+  padding-bottom: 220px;
+}
+
 .site-footer {
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.92);

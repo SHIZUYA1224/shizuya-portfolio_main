@@ -9,7 +9,40 @@ const hero = {
   seek: document.getElementById('hero-seek'),
   current: document.getElementById('hero-current'),
   duration: document.getElementById('hero-duration'),
+  volume: document.getElementById('hero-volume'),
   pulses: document.querySelectorAll('.music-hero__pulse span'),
+};
+
+const nowPlaying = {
+  container: document.querySelector('.now-playing'),
+  cover: document.getElementById('bar-cover'),
+  title: document.getElementById('bar-title'),
+  description: document.getElementById('bar-description'),
+  play: document.getElementById('bar-play'),
+  seek: document.getElementById('bar-seek'),
+  current: document.getElementById('bar-current'),
+  duration: document.getElementById('bar-duration'),
+  volume: document.getElementById('bar-volume'),
+};
+
+const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
+let masterVolume = clamp01(parseFloat(hero.volume?.value ?? nowPlaying.volume?.value ?? '0.85'));
+
+const updateVolumeUI = (source) => {
+  if (hero.volume && hero.volume !== source) {
+    hero.volume.value = masterVolume.toString();
+  }
+  if (nowPlaying.volume && nowPlaying.volume !== source) {
+    nowPlaying.volume.value = masterVolume.toString();
+  }
+};
+
+const applyVolume = (value, source) => {
+  masterVolume = clamp01(value);
+  trackStates.forEach(({ audio }) => {
+    audio.volume = masterVolume;
+  });
+  updateVolumeUI(source);
 };
 
 const formatTime = (seconds) => {
@@ -41,24 +74,48 @@ const stopPulse = () => {
   resetPulse();
 };
 
+const updatePlayButtons = (isPlaying) => {
+  const state = isPlaying ? 'pause' : 'play';
+  const label = isPlaying ? '一時停止' : '再生';
+  if (hero.play) {
+    hero.play.dataset.state = state;
+    hero.play.setAttribute('aria-label', label);
+  }
+  if (nowPlaying.play) {
+    nowPlaying.play.dataset.state = state;
+    nowPlaying.play.setAttribute('aria-label', label);
+  }
+};
+
 const updateHeroPlaybackState = () => {
   if (!hero.container || !hero.play) return;
   const isPlaying = Boolean(currentlyPlaying && !currentlyPlaying.audio.paused);
   hero.container.dataset.state = isPlaying ? 'playing' : 'idle';
-  hero.play.dataset.state = isPlaying ? 'pause' : 'play';
-  hero.play.setAttribute('aria-label', isPlaying ? '一時停止' : '再生');
+  updatePlayButtons(isPlaying);
+};
+
+const setSliderValue = (slider, ratio) => {
+  if (!slider) return;
+  if (slider.dataset && slider.dataset.seeking === 'true') {
+    return;
+  }
+  slider.value = Number.isFinite(ratio) ? ratio : 0;
 };
 
 const syncHeroTime = (state) => {
   if (!activeTrack || state !== activeTrack) return;
-  if (!hero.seek || !hero.current || !hero.duration) return;
   const { audio } = state;
-  hero.current.textContent = formatTime(audio.currentTime);
-  hero.duration.textContent = formatTime(audio.duration);
-  if (hero.seek.dataset.seeking !== 'true') {
-    const ratio = (audio.currentTime / audio.duration) || 0;
-    hero.seek.value = Number.isFinite(ratio) ? ratio : 0;
-  }
+  const currentFormatted = formatTime(audio.currentTime);
+  const durationFormatted = formatTime(audio.duration);
+  const ratio = (audio.currentTime / audio.duration) || 0;
+
+  if (hero.current) hero.current.textContent = currentFormatted;
+  if (hero.duration) hero.duration.textContent = durationFormatted;
+  setSliderValue(hero.seek, ratio);
+
+  if (nowPlaying.current) nowPlaying.current.textContent = currentFormatted;
+  if (nowPlaying.duration) nowPlaying.duration.textContent = durationFormatted;
+  setSliderValue(nowPlaying.seek, ratio);
 };
 
 const setActiveTrack = (state) => {
@@ -80,6 +137,20 @@ const setActiveTrack = (state) => {
   if (hero.details) {
     hero.details.textContent = state.track.year ? `${state.track.year} · スタジオ制作` : 'オリジナル楽曲';
   }
+  if (nowPlaying.cover) {
+    nowPlaying.cover.src = state.track.cover;
+    nowPlaying.cover.alt = `${state.track.title} カバーアート`;
+  }
+  if (nowPlaying.title) {
+    nowPlaying.title.textContent = state.track.title;
+  }
+  if (nowPlaying.description) {
+    nowPlaying.description.textContent = state.track.year ? `${state.track.year} · ${state.track.description}` : state.track.description;
+  }
+  if (nowPlaying.container) {
+    nowPlaying.container.dataset.state = 'ready';
+  }
+  applyVolume(masterVolume);
   syncHeroTime(state);
   updateHeroPlaybackState();
 };
@@ -138,6 +209,21 @@ const resetTrack = (state) => {
   syncHeroTime(state);
 };
 
+const togglePlayback = () => {
+  if (!activeTrack) {
+    if (trackStates[0]) {
+      setActiveTrack(trackStates[0]);
+      playTrack(trackStates[0]);
+    }
+    return;
+  }
+  if (currentlyPlaying === activeTrack && !activeTrack.audio.paused) {
+    pauseTrack(activeTrack);
+  } else {
+    playTrack(activeTrack);
+  }
+};
+
 const createTrackCard = (track) => {
   const article = document.createElement('article');
   article.className = 'track-card';
@@ -169,7 +255,7 @@ const createTrackCard = (track) => {
 
   const audio = new Audio(track.audio);
   audio.preload = 'metadata';
-  audio.volume = 0.85;
+  audio.volume = masterVolume;
 
   const state = {
     track,
@@ -229,53 +315,56 @@ const createTrackCard = (track) => {
   return state;
 };
 
-const attachHeroControls = () => {
-  if (!hero.play || !hero.seek) return;
-
-  hero.play.addEventListener('click', () => {
-    if (!activeTrack) {
-      if (trackStates[0]) {
-        setActiveTrack(trackStates[0]);
-        playTrack(trackStates[0]);
-      }
-      return;
-    }
-    if (currentlyPlaying === activeTrack && !activeTrack.audio.paused) {
-      pauseTrack(activeTrack);
-    } else {
-      playTrack(activeTrack);
-    }
-  });
-
-  const setHeroSeeking = (flag) => {
-    hero.seek.dataset.seeking = flag ? 'true' : 'false';
+const bindSeekControl = (slider) => {
+  if (!slider) return;
+  slider.dataset.seeking = 'false';
+  const setSeeking = (flag) => {
+    slider.dataset.seeking = flag ? 'true' : 'false';
   };
 
-  hero.seek.addEventListener('input', () => {
+  slider.addEventListener('input', () => {
     if (!activeTrack || !Number.isFinite(activeTrack.audio.duration)) {
       return;
     }
-    const nextTime = parseFloat(hero.seek.value) * activeTrack.audio.duration;
+    const nextTime = parseFloat(slider.value) * activeTrack.audio.duration;
     if (Number.isFinite(nextTime)) {
       activeTrack.audio.currentTime = nextTime;
       syncHeroTime(activeTrack);
     }
   });
 
-  hero.seek.addEventListener('pointerdown', () => setHeroSeeking(true));
-  hero.seek.addEventListener('pointerup', () => setHeroSeeking(false));
-  hero.seek.addEventListener('pointercancel', () => setHeroSeeking(false));
-  hero.seek.addEventListener('mousedown', () => setHeroSeeking(true));
-  hero.seek.addEventListener('mouseup', () => setHeroSeeking(false));
-  hero.seek.addEventListener('touchstart', () => setHeroSeeking(true), { passive: true });
-  hero.seek.addEventListener('touchend', () => setHeroSeeking(false));
-  hero.seek.addEventListener('blur', () => setHeroSeeking(false));
+  slider.addEventListener('pointerdown', () => setSeeking(true));
+  slider.addEventListener('pointerup', () => setSeeking(false));
+  slider.addEventListener('pointercancel', () => setSeeking(false));
+  slider.addEventListener('mousedown', () => setSeeking(true));
+  slider.addEventListener('mouseup', () => setSeeking(false));
+  slider.addEventListener('touchstart', () => setSeeking(true), { passive: true });
+  slider.addEventListener('touchend', () => setSeeking(false));
+  slider.addEventListener('blur', () => setSeeking(false));
+};
+
+const attachControls = () => {
+  hero.play?.addEventListener('click', togglePlayback);
+  nowPlaying.play?.addEventListener('click', togglePlayback);
+
+  bindSeekControl(hero.seek);
+  bindSeekControl(nowPlaying.seek);
+
+  hero.volume?.addEventListener('input', (event) => {
+    applyVolume(parseFloat(event.target.value), event.target);
+  });
+
+  nowPlaying.volume?.addEventListener('input', (event) => {
+    applyVolume(parseFloat(event.target.value), event.target);
+  });
 };
 
 resetPulse();
 
 if (trackList) {
-  attachHeroControls();
+  attachControls();
+  updateVolumeUI();
+  applyVolume(masterVolume);
   fetch('data/tracks.json')
     .then((response) => response.json())
     .then((tracks) => {

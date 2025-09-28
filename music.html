@@ -75,6 +75,11 @@
                   <input id="hero-seek" class="music-hero__seek" type="range" min="0" max="1" step="0.001" value="0" aria-label="再生位置">
                   <span id="hero-duration" class="music-hero__time">0:00</span>
                 </div>
+                <div class="music-hero__volume">
+                  <span class="music-hero__volume-icon" aria-hidden="true"></span>
+                  <label class="visually-hidden" for="hero-volume">音量</label>
+                  <input id="hero-volume" class="music-hero__volume-slider" type="range" min="0" max="1" step="0.01" value="0.85">
+                </div>
               </div>
             </div>
           </div>
@@ -82,6 +87,28 @@
         </div>
       </section>
     </main>
+    <div class="now-playing" data-state="idle" role="region" aria-live="polite" aria-label="現在の再生状況">
+      <div class="now-playing__inner">
+        <div class="now-playing__meta">
+          <img id="bar-cover" class="now-playing__cover" src="assets/music/covers/midnight-lines.svg" alt="" width="56" height="56" loading="lazy">
+          <div class="now-playing__text">
+            <p id="bar-title" class="now-playing__title">—</p>
+            <p id="bar-description" class="now-playing__description">トラックを選択してください。</p>
+          </div>
+        </div>
+        <div class="now-playing__controls">
+          <button id="bar-play" class="now-playing__play" type="button" aria-label="再生" data-state="play"></button>
+          <span id="bar-current" class="now-playing__time">0:00</span>
+          <input id="bar-seek" class="now-playing__seek" type="range" min="0" max="1" step="0.001" value="0" aria-label="再生位置 (ボトムバー)">
+          <span id="bar-duration" class="now-playing__time">0:00</span>
+        </div>
+        <div class="now-playing__volume">
+          <span class="now-playing__volume-icon" aria-hidden="true"></span>
+          <label class="visually-hidden" for="bar-volume">音量</label>
+          <input id="bar-volume" class="now-playing__volume-slider" type="range" min="0" max="1" step="0.01" value="0.85">
+        </div>
+      </div>
+    </div>
     <footer class="site-footer" role="contentinfo">
       <div class="container footer-inner">
         <p>&copy; <span data-year></span> Shizuya Kubota.</p>
