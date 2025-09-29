@@ -69,47 +69,75 @@
             <p class="section-lead">ジャンルごとの制作スタイルを一望できるショートガイド。ビジュアルと一緒に、各プロジェクトの世界観を覗いてください。</p>
           </div>
           <div class="work-grid">
-            <article class="work-card" data-animate="work-card" data-delay="0">
+            <article class="work-card" data-animate="work-card" data-delay="0" data-theme="vrm">
               <div class="work-card__media" aria-hidden="true">
                 <img src="assets/img/work-vrm.svg" alt="" loading="lazy">
               </div>
               <div class="work-card__content">
-                <p class="work-card__eyebrow">Immersive Avatars</p>
-                <h3 class="work-card__title">Responsive VRM Lighting</h3>
-                <p class="work-card__text">ライティングプリセットとカメラ演出で、リアルタイムアバターの質感とストーリー性を引き出します。</p>
+                <div class="work-card__header">
+                  <span class="work-card__tag">Immersive Avatars</span>
+                  <h3 class="work-card__title">Adaptive VRM Lighting Suite</h3>
+                </div>
+                <p class="work-card__lead">XR撮影や配信現場で即使える、感情表現とライティングを同時に設計できるアバター演出パッケージです。</p>
+                <ul class="work-card__features">
+                  <li>ACES準拠のデュアルライトで肌トーンを自動補正</li>
+                  <li>表情ブレンドとカメラワークをタイムラインで同期</li>
+                  <li>OBS / Unreal Engine へのリアルタイムハンドオフ</li>
+                </ul>
                 <a class="work-card__link" href="vrm.html">Explore VRM Showcase</a>
               </div>
             </article>
-            <article class="work-card" data-animate="work-card" data-delay="120">
+            <article class="work-card" data-animate="work-card" data-delay="140" data-theme="gltf">
               <div class="work-card__media" aria-hidden="true">
                 <img src="assets/img/work-gltf.svg" alt="" loading="lazy">
               </div>
               <div class="work-card__content">
-                <p class="work-card__eyebrow">Digital Props</p>
-                <h3 class="work-card__title">Stylised glTF Assets</h3>
-                <p class="work-card__text">家具・衣装・空間オブジェクトを、軽量かつ移植性の高いglTF 2.0で設計。プロトタイプにも即投入できます。</p>
+                <div class="work-card__header">
+                  <span class="work-card__tag">Digital Props</span>
+                  <h3 class="work-card__title">Modular glTF Object Library</h3>
+                </div>
+                <p class="work-card__lead">インテリアや衣装のスタディを、軽量なglTF 2.0で高速プレビュー。空間演出をその場で差し替えられます。</p>
+                <ul class="work-card__features">
+                  <li>100KB以下のPBRセットアップとカラーバリアント</li>
+                  <li>LODとShadow Meshを自動生成するテンプレート</li>
+                  <li>Figma ↔ DCCを結ぶ配色・寸法ガイドライン</li>
+                </ul>
                 <a class="work-card__link" href="models.html">View 3D Model Library</a>
               </div>
             </article>
-            <article class="work-card" data-animate="work-card" data-delay="240">
+            <article class="work-card" data-animate="work-card" data-delay="280" data-theme="music">
               <div class="work-card__media" aria-hidden="true">
                 <img src="assets/img/work-music.svg" alt="" loading="lazy">
               </div>
               <div class="work-card__content">
-                <p class="work-card__eyebrow">Sound Design</p>
-                <h3 class="work-card__title">Granular Music Systems</h3>
-                <p class="work-card__text">有機的な楽器と電子音響をレイヤーし、インタラクションに追従する音の体験を構築します。</p>
+                <div class="work-card__header">
+                  <span class="work-card__tag">Sound Design</span>
+                  <h3 class="work-card__title">Granular Music Architectures</h3>
+                </div>
+                <p class="work-card__lead">楽曲のセクションやモジュレーションをプログラムで制御し、シーンの表情に合わせて音が呼吸する仕掛けを構築します。</p>
+                <ul class="work-card__features">
+                  <li>ダイナミックミキサーとオートゲインで音量を自動整流</li>
+                  <li>Max for LiveとThree.jsを同期させたリアクティブ演出</li>
+                  <li>アナログ収録＋グラニュラー処理のハイブリッド制作</li>
+                </ul>
                 <a class="work-card__link" href="music.html">Listen to Music Library</a>
               </div>
             </article>
-            <article class="work-card" data-animate="work-card" data-delay="360">
+            <article class="work-card" data-animate="work-card" data-delay="420" data-theme="video">
               <div class="work-card__media" aria-hidden="true">
                 <img src="assets/img/work-video.svg" alt="" loading="lazy">
               </div>
               <div class="work-card__content">
-                <p class="work-card__eyebrow">Motion Direction</p>
-                <h3 class="work-card__title">Cinematic Launchpads</h3>
-                <p class="work-card__text">秒単位で演出を設計し、ストーリーボードと連動する映像体験を軽量なプレイヤーで届けます。</p>
+                <div class="work-card__header">
+                  <span class="work-card__tag">Motion Direction</span>
+                  <h3 class="work-card__title">Cinematic Launchpad Series</h3>
+                </div>
+                <p class="work-card__lead">秒単位でショット設計し、カラーグレードやテロップ演出まで含めたローンチ映像を統合的にプロデュースします。</p>
+                <ul class="work-card__features">
+                  <li>Shotリストとプレイアウトを同一タイムラインで管理</li>
+                  <li>LUT・音響演出まで含めたリニアなレビュー体制</li>
+                  <li>低遅延プレイヤー＋CDN最適化で配信品質を担保</li>
+                </ul>
                 <a class="work-card__link" href="video.html">Watch Video Projects</a>
               </div>
             </article>
