@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Fabric Divider Preview</title>
+  <desc id="desc">Soft teal textile panel with gentle curvature.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f1b1d" />
+      <stop offset="1" stop-color="#183036" />
+    </linearGradient>
+    <linearGradient id="fabric" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#7fd1cc" />
+      <stop offset="1" stop-color="#4aa3b0" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="24" fill="url(#bg)" />
+  <path d="M40 30 Q70 12 100 28 T140 30 V130 Q110 146 80 132 T20 132 Z" fill="url(#fabric)" opacity="0.9" />
+</svg>

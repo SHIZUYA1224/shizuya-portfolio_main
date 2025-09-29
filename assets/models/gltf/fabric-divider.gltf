@@ -1,0 +1,103 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "Codex CLI"
+  },
+  "extensionsUsed": [
+    "KHR_materials_unlit"
+  ],
+  "extensionsRequired": [
+    "KHR_materials_unlit"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Fabric Divider"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Fabric Divider",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "indices": 1,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "Fabric Divider Material",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.58,
+          0.78,
+          0.82,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      },
+      "extensions": {
+        "KHR_materials_unlit": {}
+      }
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 132,
+      "uri": "data:application/octet-stream;base64,zcxMv83MjD/NzEy9mpmZvpqZmT/NzEw9mpmZPmZmhj/NzEy9zcxMPz0Klz8K1yM9zcxMvwAAAAAAAAAAmpmZvs3MzD2PwnW9mpmZPs3MTL0K16M8zcxMP4/C9T0K1yO9AAABAAUAAAAFAAQAAQACAAYAAQAGAAUAAgADAAcAAgAHAAYA"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 96,
+      "byteLength": 36,
+      "target": 34963
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "min": [
+        -0.8,
+        -0.05,
+        -0.06
+      ],
+      "max": [
+        0.8,
+        1.2,
+        0.05
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 18,
+      "type": "SCALAR"
+    }
+  ]
+}

@@ -754,6 +754,141 @@ body[data-page="home"] .cards-grid .card {
   }
 }
 
+.models-layout {
+  display: grid;
+  gap: clamp(24px, 4vw, 36px);
+  margin-top: clamp(24px, 4vw, 36px);
+  align-items: start;
+}
+
+.models-sidebar {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(242, 246, 245, 0.8);
+  border: 1px solid rgba(50, 72, 81, 0.1);
+  box-shadow: 0 18px 36px -28px rgba(50, 72, 81, 0.4);
+}
+
+.models-list {
+  display: grid;
+  gap: 12px;
+}
+
+.models-list-item {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(50, 72, 81, 0.12);
+  background: rgba(255, 255, 255, 0.94);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-medium), transform var(--transition-fast);
+}
+
+.models-list-item:hover,
+.models-list-item:focus-visible {
+  border-color: rgba(134, 172, 65, 0.4);
+  box-shadow: 0 14px 24px -18px rgba(50, 72, 81, 0.4);
+  transform: translateY(-1px);
+}
+
+.models-list-item.is-active {
+  border-color: rgba(134, 172, 65, 0.6);
+  box-shadow: 0 18px 28px -16px rgba(134, 172, 65, 0.4);
+}
+
+.models-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(221, 233, 228, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.models-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.models-list-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.models-list-title {
+  font-weight: 700;
+  color: rgba(31, 40, 42, 0.9);
+}
+
+.models-list-sub {
+  font-size: 0.85rem;
+  color: rgba(31, 40, 42, 0.6);
+}
+
+.models-viewer {
+  display: grid;
+  gap: 22px;
+}
+
+.models-meta {
+  display: grid;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(50, 72, 81, 0.1);
+  box-shadow: 0 24px 40px -28px rgba(50, 72, 81, 0.35);
+}
+
+.models-attributes {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.models-attributes div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.models-attributes dt {
+  font-weight: 600;
+  color: rgba(31, 40, 42, 0.65);
+}
+
+.models-attributes dd {
+  margin: 0;
+  color: rgba(31, 40, 42, 0.85);
+}
+
+.models-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(31, 40, 42, 0.6);
+}
+
+@media (min-width: 960px) {
+  .models-layout {
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  }
+
+  .models-viewer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .music-hero__controls {
   display: grid;
   grid-template-columns: auto minmax(220px, 1fr) auto;

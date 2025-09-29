@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Video Reels | Shizuya Kubota</title>
+    <title>3D Model Library | Shizuya Kubota</title>
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/themes.css">
   </head>
-  <body data-page="video">
+  <body data-page="models">
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a class="brand" href="index.html" aria-label="Shizuya Kubota Home">
@@ -48,11 +48,44 @@
       </div>
     </header>
     <main id="main" class="site-main" role="main">
-      <section class="section" aria-labelledby="video-title">
+      <section class="section" aria-labelledby="models-title">
         <div class="container">
-          <h1 id="video-title">Video Reels</h1>
-          <p class="lead">シネマトグラフィとモーション演出のハイライト集。必要なタイミングでだけ読み込まれる、プライバシーに配慮したプレイヤーでご覧いただけます。</p>
-          <div id="video-list" class="video-grid" role="list"></div>
+          <h1 id="models-title">3D Model Library</h1>
+          <p class="lead">服飾・インテリア・空間オブジェクトを glTF 2.0 形式でまとめたライブラリです。標準規格に沿った軽量アセットを、ブラウザ上で即座にプレビューできます。</p>
+          <div class="models-layout">
+            <aside class="models-sidebar" aria-label="モデル一覧">
+              <h2 class="sidebar-title">Collection</h2>
+              <div id="gltf-model-list" class="models-list" role="list"></div>
+            </aside>
+            <div class="models-viewer">
+              <div class="canvas-wrapper">
+                <canvas id="gltf-canvas" aria-label="3D model viewer" role="img"></canvas>
+                <div id="gltf-loading" class="loading-overlay" hidden>
+                  <div class="loading-indicator" aria-hidden="true"></div>
+                  <p>モデルを読み込み中…</p>
+                </div>
+              </div>
+              <div class="models-meta" aria-live="polite">
+                <h2 id="gltf-title">モデルを選択</h2>
+                <p id="gltf-description">リストからモデルを選ぶと、カメラ・ライティングが自動調整された状態でプレビューが開始されます。</p>
+                <dl class="models-attributes">
+                  <div>
+                    <dt>カテゴリー</dt>
+                    <dd id="gltf-meta-category">–</dd>
+                  </div>
+                  <div>
+                    <dt>形式</dt>
+                    <dd id="gltf-meta-format">glTF 2.0</dd>
+                  </div>
+                  <div>
+                    <dt>ポリゴン数</dt>
+                    <dd id="gltf-meta-polycount">–</dd>
+                  </div>
+                </dl>
+                <p class="models-hint">ヒント: ドラッグで回転、スクロールでズーム、右クリックまたは二本指でパン。アセットは標準軸とメートルスケールに揃えています。</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -63,6 +96,6 @@
       </div>
     </footer>
     <script type="module" src="src/main.js"></script>
-    <script type="module" src="src/lite-youtube.js"></script>
+    <script type="module" src="src/models.js"></script>
   </body>
 </html>

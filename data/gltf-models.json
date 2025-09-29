@@ -1,0 +1,41 @@
+[
+  {
+    "id": "studio-pendant",
+    "name": "Studio Pendant",
+    "category": "Lighting",
+    "description": "六面体を斜めに組んだミニマルなペンダントライト。メタリック調のフィニッシュと細いリーシュで、空間のアクセントとして機能します。",
+    "polycount": "8 triangles",
+    "src": "assets/models/gltf/studio-pendant.gltf",
+    "preview": "assets/models/previews/studio-pendant.svg",
+    "camera": {
+      "position": [1.2, 1.2, 1.2],
+      "target": [0, 0, 0]
+    }
+  },
+  {
+    "id": "loft-side-table",
+    "name": "Loft Side Table",
+    "category": "Furniture",
+    "description": "スチールレッグと温かみのあるウッドトップを組み合わせたサイドテーブル。ソファ横でのマルチユースに最適なサイズ感です。",
+    "polycount": "12 triangles",
+    "src": "assets/models/gltf/loft-side-table.gltf",
+    "preview": "assets/models/previews/loft-side-table.svg",
+    "camera": {
+      "position": [1.6, 1.1, 1.8],
+      "target": [0, 0.2, 0]
+    }
+  },
+  {
+    "id": "fabric-divider",
+    "name": "Fabric Divider",
+    "category": "Interior",
+    "description": "柔らかな曲線を描くファブリックパネル。空間の仕切りとして光を透過させつつ、ほどよいプライバシーを確保します。",
+    "polycount": "6 triangles",
+    "src": "assets/models/gltf/fabric-divider.gltf",
+    "preview": "assets/models/previews/fabric-divider.svg",
+    "camera": {
+      "position": [1.8, 1.4, 2.4],
+      "target": [0, 0.6, 0]
+    }
+  }
+]
