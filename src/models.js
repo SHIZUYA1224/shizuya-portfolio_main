@@ -73,9 +73,9 @@ if (canvas && listEl) {
   };
 
   const focusCamera = (meta, object, initialBox) => {
-    const center = new THREE.Vector3();
-    initialBox.getCenter(center);
+    const center = initialBox.getCenter(new THREE.Vector3());
     object.position.sub(center);
+
     const box = new THREE.Box3().setFromObject(object);
     const size = box.getSize(new THREE.Vector3());
     const radius = Math.max(size.x, size.y, size.z) * 0.55 || 1;
@@ -83,7 +83,8 @@ if (canvas && listEl) {
     if (meta?.camera?.target && Array.isArray(meta.camera.target)) {
       controls.target.fromArray(meta.camera.target);
     } else {
-      controls.target.set(0, Math.max(size.y * 0.2, 0), 0);
+      const focalPoint = box.getCenter(new THREE.Vector3());
+      controls.target.copy(focalPoint);
     }
 
     if (meta?.camera?.position && Array.isArray(meta.camera.position)) {
@@ -97,6 +98,9 @@ if (canvas && listEl) {
     camera.far = Math.max(radius * 40, 30);
     camera.updateProjectionMatrix();
     controls.update();
+
+    const minY = box.min.y;
+    ground.position.set(controls.target.x, minY - 0.01, controls.target.z);
   };
 
   const resize = () => {
@@ -153,7 +157,6 @@ if (canvas && listEl) {
 
       const box = new THREE.Box3().setFromObject(object);
       focusCamera(meta, object, box);
-      ground.position.set(controls.target.x, ground.position.y, controls.target.z);
       updateMeta(meta);
     } catch (error) {
       console.error('Failed to load glTF model', error);
