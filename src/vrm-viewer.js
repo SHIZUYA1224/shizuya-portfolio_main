@@ -221,6 +221,13 @@ if (canvas && listEl) {
 
   window.addEventListener('resize', resize);
   resize();
+  // Quick recenter via double click
+  canvas?.addEventListener('dblclick', () => {
+    if (currentVRM) {
+      focusOnModel(currentVRM);
+      bindIdleBones(currentVRM);
+    }
+  });
 
   const clock = new THREE.Clock();
   const renderLoop = () => {

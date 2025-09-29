@@ -50,6 +50,7 @@ if (canvas && listEl) {
 
   const loader = new GLTFLoader();
   let currentObject = null;
+  let currentMeta = null;
 
   const showLoading = (visible) => {
     if (loadingOverlay) {
@@ -119,6 +120,12 @@ if (canvas && listEl) {
   };
   window.addEventListener('resize', resize);
   resize();
+  // Quick recenter via double click
+  canvas?.addEventListener('dblclick', () => {
+    if (!currentObject) return;
+    const box = new THREE.Box3().setFromObject(currentObject);
+    focusCamera(currentMeta || {}, currentObject, box);
+  });
 
   const renderLoop = () => {
     requestAnimationFrame(renderLoop);
@@ -161,6 +168,7 @@ if (canvas && listEl) {
       });
       scene.add(object);
       currentObject = object;
+      currentMeta = meta;
 
       const box = new THREE.Box3().setFromObject(object);
       focusCamera(meta, object, box);
