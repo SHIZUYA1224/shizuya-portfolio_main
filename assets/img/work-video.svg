@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-labelledby="title desc">
+  <title id="title">Video Direction Preview</title>
+  <desc id="desc">Framed cinematic interface with light beams and timeline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#08131d" />
+      <stop offset="1" stop-color="#14273a" />
+    </linearGradient>
+    <linearGradient id="beam" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffca85" />
+      <stop offset="1" stop-color="#ff8561" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="32" fill="url(#bg)" />
+  <rect x="60" y="80" width="360" height="200" rx="24" fill="#0c1822" stroke="#233647" stroke-width="4" />
+  <path d="M120 120 L360 220" stroke="url(#beam)" stroke-width="40" stroke-linecap="round" opacity="0.4" />
+  <rect x="100" y="256" width="280" height="16" rx="8" fill="#23384a" />
+  <rect x="160" y="256" width="80" height="16" rx="8" fill="#ff9b6b" />
+  <circle cx="200" cy="220" r="30" fill="#ffb78a" opacity="0.8" />
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-labelledby="title desc">
+  <title id="title">glTF Asset Preview</title>
+  <desc id="desc">Collection of interior props rendered with soft studio light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f1b1f" />
+      <stop offset="1" stop-color="#24343a" />
+    </linearGradient>
+    <linearGradient id="objectA" x1="0" x2="1">
+      <stop offset="0" stop-color="#d6a66f" />
+      <stop offset="1" stop-color="#a27648" />
+    </linearGradient>
+    <linearGradient id="objectB" x1="0" x2="1">
+      <stop offset="0" stop-color="#7fd7d1" />
+      <stop offset="1" stop-color="#53a6be" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="32" fill="url(#bg)" />
+  <g transform="translate(120 210)">
+    <rect x="-30" y="-120" width="60" height="120" rx="20" fill="url(#objectA)" />
+    <rect x="-60" y="-12" width="120" height="24" rx="12" fill="#c28b55" opacity="0.8" />
+  </g>
+  <g transform="translate(320 200)">
+    <path d="M-70 -90 H70 L50 80 H-50 Z" fill="url(#objectB)" opacity="0.92" />
+    <rect x="-20" y="80" width="40" height="24" rx="8" fill="#7abcc3" opacity="0.7" />
+  </g>
+  <ellipse cx="240" cy="310" rx="160" ry="32" fill="#0c1418" opacity="0.45" />
+</svg>

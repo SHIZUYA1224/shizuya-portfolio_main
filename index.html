@@ -62,42 +62,56 @@
           <div class="hero__scroll">スクロールで代表作を表示</div>
         </div>
       </section>
-      <section class="section section--glass" aria-labelledby="section-featured">
+      <section class="section section--glass" aria-labelledby="section-work">
         <div class="container">
           <div class="section-header">
-            <h2 id="section-featured">Featured Highlights</h2>
-            <p class="section-lead">リアルタイム3D・オーディオツール・映像演出を横断して制作した代表的なプロジェクトです。</p>
+            <h2 id="section-work">Work Spectrum</h2>
+            <p class="section-lead">ジャンルごとの制作スタイルを一望できるショートガイド。ビジュアルと一緒に、各プロジェクトの世界観を覗いてください。</p>
           </div>
-          <div class="cards-grid">
-            <article class="card focus" aria-labelledby="vrm-card-title">
-              <div class="card-body">
-                <p class="card-eyebrow">Real-time Avatar</p>
-                <h3 id="vrm-card-title">Adaptive VRM Showcase</h3>
-                <p class="card-text">VRM 0.x / 1.0に対応したThree.jsビューア。ストーリーテリングを意識したライティングとレスポンシブ設計。</p>
+          <div class="work-grid">
+            <article class="work-card" data-animate="work-card" data-delay="0">
+              <div class="work-card__media" aria-hidden="true">
+                <img src="assets/img/work-vrm.svg" alt="" loading="lazy">
               </div>
-              <footer class="card-footer">
-                <a class="inline-link" href="vrm.html">View details</a>
-              </footer>
+              <div class="work-card__content">
+                <p class="work-card__eyebrow">Immersive Avatars</p>
+                <h3 class="work-card__title">Responsive VRM Lighting</h3>
+                <p class="work-card__text">ライティングプリセットとカメラ演出で、リアルタイムアバターの質感とストーリー性を引き出します。</p>
+                <a class="work-card__link" href="vrm.html">Explore VRM Showcase</a>
+              </div>
             </article>
-            <article class="card" aria-labelledby="music-card-title">
-              <div class="card-body">
-                <p class="card-eyebrow">Audio Systems</p>
-                <h3 id="music-card-title">Custom Audio Player Toolkit</h3>
-                <p class="card-text">キーボード操作に最適化したHTML5プレイヤー。テーマ切り替えや波形をモチーフにしたUIアクセントを備えています。</p>
+            <article class="work-card" data-animate="work-card" data-delay="120">
+              <div class="work-card__media" aria-hidden="true">
+                <img src="assets/img/work-gltf.svg" alt="" loading="lazy">
               </div>
-              <footer class="card-footer">
-                <a class="inline-link" href="music.html">Listen now</a>
-              </footer>
+              <div class="work-card__content">
+                <p class="work-card__eyebrow">Digital Props</p>
+                <h3 class="work-card__title">Stylised glTF Assets</h3>
+                <p class="work-card__text">家具・衣装・空間オブジェクトを、軽量かつ移植性の高いglTF 2.0で設計。プロトタイプにも即投入できます。</p>
+                <a class="work-card__link" href="models.html">View 3D Model Library</a>
+              </div>
             </article>
-            <article class="card" aria-labelledby="video-card-title">
-              <div class="card-body">
-                <p class="card-eyebrow">Cinematic</p>
-                <h3 id="video-card-title">Lightweight Video Launchpads</h3>
-                <p class="card-text">パフォーマンスを考慮したYouTube埋め込み。プライバシーモード対応で、環境に応じた段階的なフォールバックを実装。</p>
+            <article class="work-card" data-animate="work-card" data-delay="240">
+              <div class="work-card__media" aria-hidden="true">
+                <img src="assets/img/work-music.svg" alt="" loading="lazy">
               </div>
-              <footer class="card-footer">
-                <a class="inline-link" href="video.html">Watch reels</a>
-              </footer>
+              <div class="work-card__content">
+                <p class="work-card__eyebrow">Sound Design</p>
+                <h3 class="work-card__title">Granular Music Systems</h3>
+                <p class="work-card__text">有機的な楽器と電子音響をレイヤーし、インタラクションに追従する音の体験を構築します。</p>
+                <a class="work-card__link" href="music.html">Listen to Music Library</a>
+              </div>
+            </article>
+            <article class="work-card" data-animate="work-card" data-delay="360">
+              <div class="work-card__media" aria-hidden="true">
+                <img src="assets/img/work-video.svg" alt="" loading="lazy">
+              </div>
+              <div class="work-card__content">
+                <p class="work-card__eyebrow">Motion Direction</p>
+                <h3 class="work-card__title">Cinematic Launchpads</h3>
+                <p class="work-card__text">秒単位で演出を設計し、ストーリーボードと連動する映像体験を軽量なプレイヤーで届けます。</p>
+                <a class="work-card__link" href="video.html">Watch Video Projects</a>
+              </div>
             </article>
           </div>
         </div>
@@ -131,5 +145,6 @@
       </div>
     </footer>
     <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/home.js"></script>
   </body>
 </html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-labelledby="title desc">
+  <title id="title">Music System Preview</title>
+  <desc id="desc">Abstract sound wave shapes layered with tape-style meters.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1a0f1f" />
+      <stop offset="1" stop-color="#362244" />
+    </linearGradient>
+    <linearGradient id="wave" x1="0" x2="1">
+      <stop offset="0" stop-color="#f4a261" />
+      <stop offset="1" stop-color="#e76f51" />
+    </linearGradient>
+    <linearGradient id="wave2" x1="0" x2="1">
+      <stop offset="0" stop-color="#5a8dee" />
+      <stop offset="1" stop-color="#9c6dfc" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="360" rx="32" fill="url(#bg)" />
+  <path d="M40 220 C120 150 180 280 240 220 C300 160 360 260 440 200" stroke="url(#wave)" stroke-width="24" fill="none" stroke-linecap="round" opacity="0.9" />
+  <path d="M60 260 C140 190 200 300 260 240 C320 180 360 260 420 220" stroke="url(#wave2)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.8" />
+  <g fill="#ffd8a8" opacity="0.7">
+    <rect x="80" y="88" width="48" height="16" rx="8" />
+    <rect x="152" y="88" width="48" height="16" rx="8" />
+    <rect x="224" y="88" width="48" height="16" rx="8" />
+    <rect x="296" y="88" width="48" height="16" rx="8" />
+    <rect x="368" y="88" width="48" height="16" rx="8" />
+  </g>
+</svg>
