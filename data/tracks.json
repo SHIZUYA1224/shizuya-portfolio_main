@@ -5,7 +5,51 @@
     "year": "2023",
     "description": "夜の都市シーンのために練り上げたモジュラー・シンセのモチーフ。",
     "cover": "assets/music/covers/midnight-lines.svg",
-    "audio": "assets/music/audio/midnight-lines.m4a"
+    "audio": "assets/music/audio/midnight-lines.m4a",
+    "insight": {
+      "title": "制作ノート",
+      "notes": "モジュラーシンセとフィールドレコーディングを組み合わせ、都市の深夜に漂う静けさと緊張感をレイヤーしました。",
+      "process": [
+        {
+          "title": "サウンドハント",
+          "detail": "深夜の高架下で列車の走行音と環境ノイズを収集し、グラニュラー化してパッドに加工。"
+        },
+        {
+          "title": "モジュラーパッチング",
+          "detail": "シーケンサーで4声のポリリズムを組み、滑らかなフィルター・モジュレーションで呼吸感を演出。"
+        },
+        {
+          "title": "ミックス",
+          "detail": "中域の密度を保ちつつ、ディレイとプレートリバーブで余韻を伸ばして夜景の奥行きを表現。"
+        }
+      ],
+      "gear": [
+        {
+          "name": "Make Noise 0-Coast",
+          "role": "メインリードとベースのモジュレーション"
+        },
+        {
+          "name": "Mutable Instruments Clouds",
+          "role": "フィールドサンプルのグラニュラー処理"
+        },
+        {
+          "name": "Sound Devices MixPre-6",
+          "role": "ロケーション録音"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/music/insights/midnight-lines-rack.svg",
+          "alt": "Midnight Linesのモジュラーパッチ"
+        },
+        {
+          "type": "image",
+          "src": "assets/music/insights/midnight-lines-arrangement.svg",
+          "alt": "Midnight Linesのアレンジビュー"
+        }
+      ]
+    }
   },
   {
     "id": "64516451-Inst",
@@ -13,7 +57,51 @@
     "year": "2022",
     "description": "モーションデザイン映像を駆動するパルシブなパーカッションとアナログベース。",
     "cover": "assets/music/covers/64516451-Inst.svg",
-    "audio": "assets/music/audio/64516451-Inst.m4a"
+    "audio": "assets/music/audio/64516451-Inst.m4a",
+    "insight": {
+      "title": "制作ノート",
+      "notes": "シネマティックなモーションに合わせて、歯切れの良いグルーヴとアナログベースのうねりを強調しました。",
+      "process": [
+        {
+          "title": "リズムデザイン",
+          "detail": "エレクトロニックパーカッションを16分グリッドで組み、ゴーストノートで推進力を作成。"
+        },
+        {
+          "title": "ベースレコーディング",
+          "detail": "SH-101のサブオシレーターを中心にドライブを加え、エンベロープを短くしてタイトに。"
+        },
+        {
+          "title": "モーション同期",
+          "detail": "映像のカットに合わせてフィルターとディレイをオートメーション。ハイライトごとにアクセントを配置。"
+        }
+      ],
+      "gear": [
+        {
+          "name": "Elektron Analog Rytm",
+          "role": "キックとパーカッションのステップシーケンス"
+        },
+        {
+          "name": "Roland SH-101",
+          "role": "ドライブ感のあるモノフォニックベース"
+        },
+        {
+          "name": "Soundtoys Effect Rack",
+          "role": "トランジション用フィルターとディレイ"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/music/insights/64516451-lab.svg",
+          "alt": "64516451-Instのスタジオセットアップ"
+        },
+        {
+          "type": "image",
+          "src": "assets/music/insights/64516451-grid.svg",
+          "alt": "リズムグリッドのシーケンス"
+        }
+      ]
+    }
   },
   {
     "id": "amber-skies",
@@ -21,6 +109,50 @@
     "year": "2021",
     "description": "豊かなストリングスがダウンテンポのエレクトロニカへと溶け込む、エンドロール向けの一曲。",
     "cover": "assets/music/covers/amber-skies.svg",
-    "audio": "assets/music/audio/amber-skies.m4a"
+    "audio": "assets/music/audio/amber-skies.m4a",
+    "insight": {
+      "title": "制作ノート",
+      "notes": "ストリングスとアナログシンセをブレンドし、夕暮れのグラデーションが広がるような緩やかな展開を描きました。",
+      "process": [
+        {
+          "title": "ストリングアレンジ",
+          "detail": "トリプルレイヤーのヴァイオリンとビオラで和声を構築し、チェロでメインテーマを支える。"
+        },
+        {
+          "title": "アンビエントサウンド",
+          "detail": "Prophet Rev2のパッドにテープディレイを挟み、柔らかい揺らぎを追加。"
+        },
+        {
+          "title": "最終ミックス",
+          "detail": "ストリングスのトップエンドを整え、リバーブのテールを調整して余韻を長く保つ。"
+        }
+      ],
+      "gear": [
+        {
+          "name": "Native Instruments Session Strings Pro",
+          "role": "ストリングセクションのレイヤー"
+        },
+        {
+          "name": "Sequential Prophet Rev2",
+          "role": "ウォームなパッドとアルペジオ"
+        },
+        {
+          "name": "FabFilter Pro-R",
+          "role": "空間処理とテールコントロール"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/music/insights/amber-skies-score.svg",
+          "alt": "Amber Skiesのスコアノート"
+        },
+        {
+          "type": "image",
+          "src": "assets/music/insights/amber-skies-mix.svg",
+          "alt": "Amber Skiesのミックスセッション"
+        }
+      ]
+    }
   }
 ]

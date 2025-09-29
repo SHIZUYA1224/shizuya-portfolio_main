@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">64516451 Instrument Lab</title>
+  <desc id="desc">Percussive rigs with analog bass and sequencer pads rendered in a neon-lit studio scene.</desc>
+  <defs>
+    <linearGradient id="lab-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#140c1c" />
+      <stop offset="1" stop-color="#2a0f35" />
+    </linearGradient>
+    <linearGradient id="lab-panel" x1="0" x2="1">
+      <stop offset="0" stop-color="#361a4a" />
+      <stop offset="1" stop-color="#53286f" />
+    </linearGradient>
+  </defs>
+  <rect fill="url(#lab-bg)" width="640" height="360" rx="24" />
+  <g transform="translate(40 48)">
+    <rect fill="url(#lab-panel)" width="560" height="264" rx="20" />
+    <g fill="#ffbc47">
+      <rect x="60" y="64" width="120" height="120" rx="16" />
+      <rect x="220" y="64" width="120" height="120" rx="16" />
+      <rect x="380" y="64" width="120" height="120" rx="16" />
+    </g>
+    <g stroke="#ffd86f" stroke-width="3" stroke-linecap="round" opacity="0.7">
+      <path d="M120 184 C 200 220, 320 200, 400 236" />
+      <path d="M260 188 C 320 156, 360 176, 420 150" />
+    </g>
+    <g fill="#ffd86f" opacity="0.4">
+      <rect x="70" y="76" width="24" height="24" rx="6" />
+      <rect x="240" y="76" width="24" height="24" rx="6" />
+      <rect x="400" y="76" width="24" height="24" rx="6" />
+    </g>
+    <g fill="#ffe4a0" opacity="0.3">
+      <rect x="90" y="206" width="360" height="24" rx="12" />
+      <rect x="90" y="238" width="320" height="18" rx="9" />
+    </g>
+  </g>
+</svg>

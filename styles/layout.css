@@ -566,6 +566,188 @@ body[data-page="home"] .cards-grid .card {
   color: rgba(52, 85, 70, 0.78);
 }
 
+.music-hero__insight-toggle {
+  justify-self: start;
+  padding: 10px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(50, 72, 81, 0.14);
+  background: rgba(255, 255, 255, 0.86);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.music-hero__insight-toggle:hover,
+.music-hero__insight-toggle:focus-visible {
+  background: rgba(134, 172, 65, 0.16);
+  border-color: rgba(134, 172, 65, 0.4);
+}
+
+.music-hero__insight-toggle-label {
+  white-space: nowrap;
+}
+
+.music-hero__insight-toggle-icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(134, 172, 65, 0.18);
+  color: var(--color-primary);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.music-hero__insight-toggle-icon::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+
+.music-hero__insight-toggle[aria-expanded='true'] .music-hero__insight-toggle-icon::before {
+  transform: rotate(-135deg);
+}
+
+.music-hero[data-insight='open'] .music-hero__insight-toggle-icon {
+  background: rgba(134, 172, 65, 0.28);
+}
+
+.music-hero__insight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(50, 72, 81, 0.12);
+  box-shadow: 0 24px 48px -30px rgba(50, 72, 81, 0.22);
+  align-items: start;
+}
+
+.music-hero__insight-media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.music-hero__insight-media[hidden] {
+  display: none;
+}
+
+.music-hero__insight-media img,
+.music-hero__insight-media video {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.music-hero__insight-content {
+  display: grid;
+  gap: 12px;
+}
+
+.music-hero__insight-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.music-hero__insight-text {
+  margin: 0;
+  color: rgba(31, 40, 42, 0.68);
+  line-height: 1.7;
+}
+
+.music-hero__insight-sections {
+  display: grid;
+  gap: 16px;
+}
+
+.music-hero__insight-section {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(236, 240, 236, 0.6);
+  border: 1px solid rgba(50, 72, 81, 0.08);
+}
+
+.music-hero__insight-section[hidden] {
+  display: none;
+}
+
+.music-hero__insight-section-title {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(31, 40, 42, 0.6);
+}
+
+.music-hero__process-list,
+.music-hero__gear-list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  color: rgba(50, 72, 81, 0.8);
+}
+
+.music-hero__process-list {
+  list-style: decimal;
+}
+
+.music-hero__gear-list {
+  list-style: disc;
+}
+
+.music-hero__process-list li,
+.music-hero__gear-list li {
+  line-height: 1.6;
+}
+
+.music-hero__process-item-title {
+  display: block;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.music-hero__process-item-detail {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(31, 40, 42, 0.68);
+}
+
+.music-hero__gear-item-label {
+  display: block;
+  font-weight: 600;
+  color: rgba(31, 40, 42, 0.82);
+}
+
+.music-hero__gear-item-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(31, 40, 42, 0.58);
+}
+
+@media (min-width: 960px) {
+  .music-hero__insight {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+}
+
 .music-hero__controls {
   display: grid;
   grid-template-columns: auto minmax(220px, 1fr) auto;

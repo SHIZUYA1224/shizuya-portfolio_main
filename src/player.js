@@ -25,6 +25,27 @@ const nowPlaying = {
   volume: document.getElementById('bar-volume'),
 };
 
+const insight = {
+  container: document.getElementById('hero-insight'),
+  toggle: document.querySelector('.music-hero__insight-toggle'),
+  toggleLabel: document.querySelector('.music-hero__insight-toggle-label'),
+  title: document.getElementById('hero-insight-title'),
+  text: document.getElementById('hero-insight-text'),
+  processSection: document.getElementById('hero-insight-process'),
+  processList: document.getElementById('hero-process-list'),
+  gearSection: document.getElementById('hero-insight-gear'),
+  gearList: document.getElementById('hero-gear-list'),
+  media: document.getElementById('hero-insight-media'),
+};
+
+if (insight.container) {
+  insight.container.hidden = true;
+}
+if (insight.toggle) {
+  insight.toggle.hidden = true;
+  insight.toggle.setAttribute('aria-expanded', 'false');
+}
+
 const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
 let masterVolume = clamp01(parseFloat(hero.volume?.value ?? nowPlaying.volume?.value ?? '0.85'));
 
@@ -59,6 +80,159 @@ let activeTrack = null;
 let currentlyPlaying = null;
 let pulseAnimationId = null;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const clearElement = (element) => {
+  if (!element) return;
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+};
+
+const setInsightToggleLabel = (expanded) => {
+  if (!insight.toggle) return;
+  const baseLabel = insight.toggle.dataset.label ?? '制作ノート';
+  const nextLabel = expanded ? `${baseLabel}を隠す` : `${baseLabel}を表示`;
+  if (insight.toggleLabel) {
+    insight.toggleLabel.textContent = nextLabel;
+  } else {
+    insight.toggle.textContent = nextLabel;
+  }
+};
+
+const setInsightExpanded = (expanded) => {
+  if (!insight.container || !insight.toggle) {
+    return;
+  }
+  if (expanded) {
+    insight.container.hidden = false;
+    insight.toggle.setAttribute('aria-expanded', 'true');
+  } else {
+    insight.container.hidden = true;
+    insight.toggle.setAttribute('aria-expanded', 'false');
+  }
+  setInsightToggleLabel(expanded);
+  if (hero.container) {
+    hero.container.dataset.insight = expanded ? 'open' : 'closed';
+  }
+};
+
+const populateInsight = (state) => {
+  if (!insight.toggle || !insight.container) {
+    return;
+  }
+  const insightData = state.track.insight;
+  if (!insightData) {
+    insight.toggle.hidden = true;
+    insight.container.hidden = true;
+    if (hero.container) {
+      hero.container.dataset.insight = 'closed';
+    }
+    return;
+  }
+
+  insight.toggle.hidden = false;
+  insight.toggle.dataset.label = insightData.title || '制作ノート';
+  setInsightExpanded(false);
+
+  if (insight.title) {
+    insight.title.textContent = insightData.title || state.track.title;
+  }
+  if (insight.text) {
+    insight.text.textContent = insightData.notes || 'この楽曲の制作メモを追加してください。';
+  }
+
+  if (insight.processSection) {
+    insight.processSection.hidden = true;
+  }
+  clearElement(insight.processList);
+  if (Array.isArray(insightData.process) && insight.processList) {
+    const hasProcess = insightData.process.length > 0;
+    if (hasProcess && insight.processSection) {
+      insight.processSection.hidden = false;
+    }
+    insightData.process.forEach((step, index) => {
+      const li = document.createElement('li');
+      if (typeof step === 'string') {
+        li.textContent = step;
+      } else if (step && typeof step === 'object') {
+        const title = document.createElement('strong');
+        title.className = 'music-hero__process-item-title';
+        title.textContent = step.title || `ステップ${index + 1}`;
+        li.appendChild(title);
+        if (step.detail) {
+          const detail = document.createElement('span');
+          detail.className = 'music-hero__process-item-detail';
+          detail.textContent = step.detail;
+          li.appendChild(detail);
+        }
+      }
+      insight.processList.appendChild(li);
+    });
+  }
+
+  if (insight.gearSection) {
+    insight.gearSection.hidden = true;
+  }
+  clearElement(insight.gearList);
+  if (Array.isArray(insightData.gear) && insight.gearList) {
+    const hasGear = insightData.gear.length > 0;
+    if (hasGear && insight.gearSection) {
+      insight.gearSection.hidden = false;
+    }
+    insightData.gear.forEach((gear) => {
+      const li = document.createElement('li');
+      if (typeof gear === 'string') {
+        li.textContent = gear;
+      } else if (gear && typeof gear === 'object') {
+        const name = gear.name || gear.title || '機材';
+        const role = gear.role || gear.note;
+        const label = document.createElement('span');
+        label.className = 'music-hero__gear-item-label';
+        label.textContent = name;
+        li.appendChild(label);
+        if (role) {
+          const meta = document.createElement('span');
+          meta.className = 'music-hero__gear-item-meta';
+          meta.textContent = role;
+          li.appendChild(meta);
+        }
+      }
+      insight.gearList.appendChild(li);
+    });
+  }
+
+  clearElement(insight.media);
+  let hasMedia = false;
+  if (insightData.media && Array.isArray(insightData.media) && insight.media) {
+    insightData.media.forEach((item, index) => {
+      const value = typeof item === 'string' ? { type: 'image', src: item } : item;
+      if (!value || !value.src) return;
+      if (value.type === 'video') {
+        const video = document.createElement('video');
+        video.src = value.src;
+        video.controls = true;
+        video.setAttribute('aria-label', value.alt || `${state.track.title} メイキング映像 ${index + 1}`);
+        insight.media.appendChild(video);
+        hasMedia = true;
+      } else {
+        const img = document.createElement('img');
+        img.src = value.src;
+        img.alt = value.alt || `${state.track.title} 制作イメージ ${index + 1}`;
+        insight.media.appendChild(img);
+        hasMedia = true;
+      }
+    });
+  }
+  if (insight.media) {
+    if (hasMedia) {
+      insight.media.hidden = false;
+      insight.media.setAttribute('aria-hidden', 'false');
+    } else {
+      insight.media.hidden = true;
+      insight.media.setAttribute('aria-hidden', 'true');
+    }
+  }
+};
 
 const resetPulse = () => {
   hero.pulses?.forEach((bar) => {
@@ -137,6 +311,7 @@ const setActiveTrack = (state) => {
   if (hero.details) {
     hero.details.textContent = state.track.year ? `${state.track.year} · スタジオ制作` : 'オリジナル楽曲';
   }
+  populateInsight(state);
   if (nowPlaying.cover) {
     nowPlaying.cover.src = state.track.cover;
     nowPlaying.cover.alt = `${state.track.title} カバーアート`;
@@ -358,6 +533,11 @@ const attachControls = () => {
 
   nowPlaying.volume?.addEventListener('input', (event) => {
     applyVolume(parseFloat(event.target.value), event.target);
+  });
+
+  insight.toggle?.addEventListener('click', () => {
+    const expanded = insight.toggle.getAttribute('aria-expanded') === 'true';
+    setInsightExpanded(!expanded);
   });
 };
 

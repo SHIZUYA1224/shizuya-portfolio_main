@@ -50,7 +50,7 @@
         <div class="container">
           <h1 id="music-title">Music Library</h1>
           <p class="lead">有機的な楽器とグラニュラー・シンセを融合させたオリジナル楽曲を収録しています。映像作品やインタラクティブ体験に合わせてデザインされたサウンドをお楽しみください。</p>
-          <div class="music-hero" data-state="idle">
+          <div class="music-hero" data-state="idle" data-insight="closed">
             <div class="music-hero__visual" aria-hidden="true">
               <img id="hero-cover" src="assets/music/covers/midnight-lines.svg" alt="" width="540" height="540" loading="lazy">
               <div class="music-hero__pulse" aria-hidden="true">
@@ -66,6 +66,27 @@
               <h2 class="music-hero__title" id="hero-title">—</h2>
               <p class="music-hero__description" id="hero-description">トラックを選ぶとサウンドとビジュアルの旅が始まります。</p>
               <p class="music-hero__details" id="hero-details">—</p>
+              <button class="music-hero__insight-toggle" type="button" aria-expanded="false" aria-controls="hero-insight">
+                <span class="music-hero__insight-toggle-label">制作ノートを表示</span>
+                <span class="music-hero__insight-toggle-icon" aria-hidden="true"></span>
+              </button>
+              <div class="music-hero__insight" id="hero-insight" hidden>
+                <div class="music-hero__insight-media" id="hero-insight-media" aria-hidden="true" hidden></div>
+                <div class="music-hero__insight-content">
+                  <h3 class="music-hero__insight-title" id="hero-insight-title">—</h3>
+                  <p class="music-hero__insight-text" id="hero-insight-text">トラックごとの制作メモがここに表示されます。</p>
+                  <div class="music-hero__insight-sections">
+                    <section class="music-hero__insight-section" id="hero-insight-process" aria-labelledby="hero-process-heading" hidden>
+                      <h4 class="music-hero__insight-section-title" id="hero-process-heading">制作の流れ</h4>
+                      <ol class="music-hero__process-list" id="hero-process-list"></ol>
+                    </section>
+                    <section class="music-hero__insight-section" id="hero-insight-gear" aria-labelledby="hero-gear-heading" hidden>
+                      <h4 class="music-hero__insight-section-title" id="hero-gear-heading">使用機材</h4>
+                      <ul class="music-hero__gear-list" id="hero-gear-list"></ul>
+                    </section>
+                  </div>
+                </div>
+              </div>
               <div class="music-hero__controls">
                 <button class="music-hero__play" id="hero-play" type="button" aria-label="再生">
                   <span class="music-hero__play-icon" aria-hidden="true"></span>
