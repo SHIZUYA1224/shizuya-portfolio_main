@@ -144,7 +144,7 @@
 .nav-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 100;
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(26px);
   -webkit-backdrop-filter: blur(26px);
@@ -203,12 +203,7 @@
   background: radial-gradient(circle at 60% 40%, rgba(50, 72, 81, 0.22), transparent 70%);
 }
 
-.nav-overlay__label {
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  color: rgba(31, 40, 42, 0.55);
-}
+.nav-overlay__label { display: none; }
 
 .nav-overlay__list {
   list-style: none;
@@ -1659,6 +1654,18 @@ body[data-page="home"] .cards-grid .card {
   transform: translateY(0);
 }
 
+.now-playing[data-collapsed='true'] {
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+body.nav-open .now-playing {
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+}
+
 .now-playing__meta {
   display: flex;
   align-items: center;
@@ -1852,6 +1859,10 @@ body[data-page="home"] .cards-grid .card {
     gap: 10px;
     flex-wrap: wrap;
   }
+  .now-playing__play { width: 48px; height: 48px; }
+  .now-playing__seek { height: 10px; }
+  .now-playing__seek::-webkit-slider-thumb { width: 20px; height: 20px; }
+  .now-playing__seek::-moz-range-thumb { width: 20px; height: 20px; }
 
   .now-playing__controls .now-playing__seek {
     flex: 1 1 100%;
@@ -1882,6 +1893,35 @@ body[data-page="home"] .cards-grid .card {
   .now-playing__volume-slider {
     width: 100px;
   }
+}
+
+.now-playing-toggle {
+  position: fixed;
+  right: calc(env(safe-area-inset-right, 0px) + 12px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 86px);
+  z-index: 70;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(50, 72, 81, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 30px -20px rgba(50, 72, 81, 0.35);
+  cursor: pointer;
+}
+
+.now-playing-toggle::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+  transform: rotate(45deg);
+  margin: 12px auto;
+}
+
+.now-playing-toggle[aria-expanded='true']::before {
+  transform: rotate(-135deg);
 }
 
 .site-footer {

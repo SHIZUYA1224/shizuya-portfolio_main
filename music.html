@@ -112,7 +112,7 @@
         </div>
       </section>
     </main>
-    <div class="now-playing" data-state="idle" role="region" aria-live="polite" aria-label="現在の再生状況">
+    <div class="now-playing" id="now-playing" data-state="idle" role="region" aria-live="polite" aria-label="現在の再生状況">
       <div class="now-playing__inner">
         <div class="now-playing__meta">
           <img id="bar-cover" class="now-playing__cover" src="assets/music/covers/midnight-lines.svg" alt="" width="56" height="56" loading="lazy">
@@ -134,6 +134,7 @@
         </div>
       </div>
     </div>
+    <button id="bar-toggle" class="now-playing-toggle" type="button" aria-controls="now-playing" aria-expanded="true" aria-label="ボトムプレイヤーを隠す"></button>
     <footer class="site-footer" role="contentinfo">
       <div class="container footer-inner">
         <p>&copy; <span data-year></span> Shizuya Kubota.</p>

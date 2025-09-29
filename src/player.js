@@ -23,6 +23,7 @@ const nowPlaying = {
   current: document.getElementById('bar-current'),
   duration: document.getElementById('bar-duration'),
   volume: document.getElementById('bar-volume'),
+  toggle: document.getElementById('bar-toggle'),
 };
 
 const insight = {
@@ -547,6 +548,26 @@ const attachControls = () => {
   insight.toggle?.addEventListener('click', () => {
     const expanded = insight.toggle.getAttribute('aria-expanded') === 'true';
     setInsightExpanded(!expanded);
+  });
+
+  // Bottom bar collapse/expand
+  const storageKey = 'music:barCollapsed';
+  const setBarCollapsed = (collapsed) => {
+    if (!nowPlaying.container) return;
+    nowPlaying.container.dataset.collapsed = collapsed ? 'true' : 'false';
+    if (nowPlaying.toggle) {
+      nowPlaying.toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      nowPlaying.toggle.setAttribute('aria-label', collapsed ? 'ボトムプレイヤーを表示' : 'ボトムプレイヤーを隠す');
+    }
+    try { localStorage.setItem(storageKey, collapsed ? '1' : '0'); } catch {}
+  };
+
+  const saved = (() => { try { return localStorage.getItem(storageKey); } catch { return null; }})();
+  if (saved === '1') setBarCollapsed(true);
+
+  nowPlaying.toggle?.addEventListener('click', () => {
+    const collapsed = nowPlaying.container?.dataset.collapsed === 'true';
+    setBarCollapsed(!collapsed);
   });
 };
 
