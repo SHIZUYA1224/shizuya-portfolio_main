@@ -73,25 +73,32 @@ if (canvas && listEl) {
   };
 
   const focusCamera = (meta, object, initialBox) => {
-    const center = initialBox.getCenter(new THREE.Vector3());
-    object.position.sub(center);
+    // recentre by translating the root so that the bounding box sits around the origin
+    const worldCenter = initialBox.getCenter(new THREE.Vector3());
+    object.position.sub(worldCenter);
+    object.updateMatrixWorld(true);
 
+    // recalc after translation to ensure precise centre
     const box = new THREE.Box3().setFromObject(object);
-    const size = box.getSize(new THREE.Vector3());
-    const radius = Math.max(size.x, size.y, size.z) * 0.55 || 1;
+    const localCenter = box.getCenter(new THREE.Vector3());
+    object.position.sub(localCenter);
+    object.updateMatrixWorld(true);
+
+    const finalBox = new THREE.Box3().setFromObject(object);
+    const size = finalBox.getSize(new THREE.Vector3());
+    const radius = Math.max(size.x, size.y, size.z) * 0.6 || 1;
 
     if (meta?.camera?.target && Array.isArray(meta.camera.target)) {
       controls.target.fromArray(meta.camera.target);
     } else {
-      const focalPoint = box.getCenter(new THREE.Vector3());
-      controls.target.copy(focalPoint);
+      controls.target.set(0, Math.max(size.y * 0.25, 0), 0);
     }
 
     if (meta?.camera?.position && Array.isArray(meta.camera.position)) {
       camera.position.fromArray(meta.camera.position);
     } else {
-      const distance = radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2));
-      camera.position.set(distance, radius * 1.2, distance);
+      const distance = radius / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+      camera.position.set(distance, radius * 0.85, distance);
     }
 
     camera.near = Math.max(radius / 100, 0.05);
@@ -99,8 +106,8 @@ if (canvas && listEl) {
     camera.updateProjectionMatrix();
     controls.update();
 
-    const minY = box.min.y;
-    ground.position.set(controls.target.x, minY - 0.01, controls.target.z);
+    const minY = finalBox.min.y;
+    ground.position.set(controls.target.x, minY - 0.02, controls.target.z);
   };
 
   const resize = () => {
