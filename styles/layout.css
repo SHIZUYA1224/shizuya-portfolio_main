@@ -754,6 +754,40 @@ body[data-page="home"] .cards-grid .card {
   }
 }
 
+.vrm-toolbar {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  margin: 10px 0 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(50, 72, 81, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 14px 30px -20px rgba(50, 72, 81, 0.35);
+}
+
+.vrm-toolbar__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vrm-toolbar button {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(50, 72, 81, 0.15);
+  background: #ffffff;
+  font-weight: 600;
+  color: rgba(20, 30, 38, 0.9);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.vrm-toolbar button:hover,
+.vrm-toolbar button:focus-visible {
+  background: rgba(134, 172, 65, 0.14);
+  border-color: rgba(134, 172, 65, 0.35);
+}
+
 .models-layout {
   display: grid;
   gap: clamp(24px, 4vw, 36px);

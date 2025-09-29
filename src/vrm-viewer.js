@@ -57,6 +57,104 @@ if (canvas && listEl) {
 
   let currentVRM = null;
 
+  // Lightweight toolbar for expressions and idle animation
+  const viewerRoot = document.querySelector('.vrm-viewer');
+  const toolbar = document.createElement('div');
+  toolbar.className = 'vrm-toolbar';
+  toolbar.innerHTML = `
+    <div class="vrm-toolbar__group" aria-label="Expressions">
+      <button type="button" data-exp="happy">Happy</button>
+      <button type="button" data-exp="sad">Sad</button>
+      <button type="button" data-exp="angry">Angry</button>
+      <button type="button" data-exp="blink">Blink</button>
+      <button type="button" data-exp="aa">Aa</button>
+      <button type="button" data-exp="ih">Ih</button>
+      <button type="button" data-exp="ou">Ou</button>
+      <button type="button" data-exp="clear">Clear</button>
+    </div>
+    <div class="vrm-toolbar__group" aria-label="Animation">
+      <button type="button" data-idle="toggle">Idle On/Off</button>
+      <button type="button" data-reset="camera">Reset View</button>
+    </div>
+  `;
+
+  if (viewerRoot && !viewerRoot.querySelector('.vrm-toolbar')) {
+    viewerRoot.insertBefore(toolbar, viewerRoot.firstChild);
+  }
+
+  const setExpression = (name, weight) => {
+    if (!currentVRM) return;
+    // Clear all supported expressions
+    if (name === 'clear') {
+      ['happy','sad','angry','blink','aa','ih','ou'].forEach((n) => setExpression(n, 0));
+      return;
+    }
+    // VRM 1.0
+    if (currentVRM.expressionManager) {
+      currentVRM.expressionManager.setValue(name, weight);
+      return;
+    }
+    // VRM 0.x
+    if (currentVRM.blendShapeProxy) {
+      const map = { happy: 'Joy', sad: 'Sorrow', angry: 'Angry', blink: 'Blink', aa: 'A', ih: 'I', ou: 'O' };
+      const key = map[name] ?? name;
+      currentVRM.blendShapeProxy.setValue(key, weight);
+      currentVRM.blendShapeProxy.update?.();
+    }
+  };
+
+  // Minimal idle sway animation (head/chest)
+  const idle = { enabled: false, t: 0, head: null, chest: null, baseHead: null, baseChest: null };
+  const bindIdleBones = (vrm) => {
+    const h = vrm.humanoid;
+    idle.head = h?.getNormalizedBoneNode?.('head') || null;
+    idle.chest = h?.getNormalizedBoneNode?.('chest') || h?.getNormalizedBoneNode?.('spine') || null;
+    idle.baseHead = idle.head?.quaternion.clone?.() || null;
+    idle.baseChest = idle.chest?.quaternion.clone?.() || null;
+    idle.t = 0;
+  };
+  const updateIdle = (delta) => {
+    if (!idle.enabled || !idle.head || !idle.baseHead) return;
+    idle.t += delta;
+    const ah = Math.sin(idle.t) * THREE.MathUtils.degToRad(3);
+    const ac = Math.sin(idle.t * 0.6) * THREE.MathUtils.degToRad(2);
+    const qh = new THREE.Quaternion().setFromEuler(new THREE.Euler(ah * 0.2, ah * 0.35, 0));
+    const qc = new THREE.Quaternion().setFromEuler(new THREE.Euler(ac * 0.35, 0, 0));
+    idle.head.quaternion.copy(idle.baseHead).multiply(qh);
+    if (idle.chest && idle.baseChest) idle.chest.quaternion.copy(idle.baseChest).multiply(qc);
+  };
+
+  toolbar.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    if (btn.dataset.exp) {
+      const exp = btn.dataset.exp;
+      if (exp === 'blink') {
+        setExpression('blink', 1);
+        setTimeout(() => setExpression('blink', 0), 160);
+      } else {
+        // toggle 0/1 for convenience, except clear
+        if (exp === 'clear') {
+          setExpression('clear', 0);
+        } else {
+          setExpression(exp, 1);
+        }
+      }
+      return;
+    }
+    if (btn.dataset.idle === 'toggle') {
+      idle.enabled = !idle.enabled;
+      return;
+    }
+    if (btn.dataset.reset === 'camera') {
+      controls.target.set(0, 1.4, 0);
+      camera.position.set(0, 1.4, 3.6);
+      camera.updateProjectionMatrix();
+      controls.update();
+      return;
+    }
+  });
+
   const showLoading = (visible) => {
     if (loadingOverlay) {
       loadingOverlay.hidden = !visible;
@@ -132,6 +230,7 @@ if (canvas && listEl) {
     if (currentVRM) {
       currentVRM.update(delta);
       currentVRM.springBoneManager?.update(delta);
+      updateIdle(delta);
     }
     renderer.render(scene, camera);
   };
@@ -153,6 +252,7 @@ if (canvas && listEl) {
       scene.add(vrm.scene);
       currentVRM = vrm;
       focusOnModel(vrm);
+      bindIdleBones(vrm);
 
       modelNameEl.textContent = model.name;
       modelDescriptionEl.textContent = model.description;
