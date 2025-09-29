@@ -66,27 +66,6 @@
               <h2 class="music-hero__title" id="hero-title">—</h2>
               <p class="music-hero__description" id="hero-description">トラックを選ぶとサウンドとビジュアルの旅が始まります。</p>
               <p class="music-hero__details" id="hero-details">—</p>
-              <button class="music-hero__insight-toggle" type="button" aria-expanded="false" aria-controls="hero-insight">
-                <span class="music-hero__insight-toggle-label">制作ノートを表示</span>
-                <span class="music-hero__insight-toggle-icon" aria-hidden="true"></span>
-              </button>
-              <div class="music-hero__insight" id="hero-insight" hidden>
-                <div class="music-hero__insight-media" id="hero-insight-media" aria-hidden="true" hidden></div>
-                <div class="music-hero__insight-content">
-                  <h3 class="music-hero__insight-title" id="hero-insight-title">—</h3>
-                  <p class="music-hero__insight-text" id="hero-insight-text">トラックごとの制作メモがここに表示されます。</p>
-                  <div class="music-hero__insight-sections">
-                    <section class="music-hero__insight-section" id="hero-insight-process" aria-labelledby="hero-process-heading" hidden>
-                      <h4 class="music-hero__insight-section-title" id="hero-process-heading">制作の流れ</h4>
-                      <ol class="music-hero__process-list" id="hero-process-list"></ol>
-                    </section>
-                    <section class="music-hero__insight-section" id="hero-insight-gear" aria-labelledby="hero-gear-heading" hidden>
-                      <h4 class="music-hero__insight-section-title" id="hero-gear-heading">使用機材</h4>
-                      <ul class="music-hero__gear-list" id="hero-gear-list"></ul>
-                    </section>
-                  </div>
-                </div>
-              </div>
               <div class="music-hero__controls">
                 <button class="music-hero__play" id="hero-play" type="button" aria-label="再生">
                   <span class="music-hero__play-icon" aria-hidden="true"></span>
@@ -100,6 +79,29 @@
                   <span class="music-hero__volume-icon" aria-hidden="true"></span>
                   <label class="visually-hidden" for="hero-volume">音量</label>
                   <input id="hero-volume" class="music-hero__volume-slider" type="range" min="0" max="1" step="0.01" value="0.85">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="music-insight" data-state="collapsed">
+            <button class="music-insight__toggle" type="button" aria-expanded="false" aria-controls="hero-insight">
+              <span class="music-insight__toggle-label">制作ノートを表示</span>
+              <span class="music-insight__toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="music-insight__panel" id="hero-insight" hidden>
+              <div class="music-insight__media" id="hero-insight-media" aria-hidden="true" hidden></div>
+              <div class="music-insight__content">
+                <h3 class="music-insight__title" id="hero-insight-title">—</h3>
+                <p class="music-insight__text" id="hero-insight-text">トラックごとの制作メモがここに表示されます。</p>
+                <div class="music-insight__sections">
+                  <section class="music-insight__section" id="hero-insight-process" aria-labelledby="hero-process-heading" hidden>
+                    <h4 class="music-insight__section-title" id="hero-process-heading">制作の流れ</h4>
+                    <ol class="music-insight__process-list" id="hero-process-list"></ol>
+                  </section>
+                  <section class="music-insight__section" id="hero-insight-gear" aria-labelledby="hero-gear-heading" hidden>
+                    <h4 class="music-insight__section-title" id="hero-gear-heading">使用機材</h4>
+                    <ul class="music-insight__gear-list" id="hero-gear-list"></ul>
+                  </section>
                 </div>
               </div>
             </div>

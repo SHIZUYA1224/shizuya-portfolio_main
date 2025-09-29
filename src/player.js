@@ -26,9 +26,10 @@ const nowPlaying = {
 };
 
 const insight = {
+  wrapper: document.querySelector('.music-insight'),
   container: document.getElementById('hero-insight'),
-  toggle: document.querySelector('.music-hero__insight-toggle'),
-  toggleLabel: document.querySelector('.music-hero__insight-toggle-label'),
+  toggle: document.querySelector('.music-insight__toggle'),
+  toggleLabel: document.querySelector('.music-insight__toggle-label'),
   title: document.getElementById('hero-insight-title'),
   text: document.getElementById('hero-insight-text'),
   processSection: document.getElementById('hero-insight-process'),
@@ -44,6 +45,10 @@ if (insight.container) {
 if (insight.toggle) {
   insight.toggle.hidden = true;
   insight.toggle.setAttribute('aria-expanded', 'false');
+}
+if (insight.wrapper) {
+  insight.wrapper.hidden = true;
+  insight.wrapper.dataset.state = 'collapsed';
 }
 
 const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
@@ -89,12 +94,12 @@ const clearElement = (element) => {
 };
 
 const setInsightToggleLabel = (expanded) => {
-  if (!insight.toggle) return;
-  const baseLabel = insight.toggle.dataset.label ?? '制作ノート';
+  if (!insight.toggle && !insight.toggleLabel) return;
+  const baseLabel = insight.toggle?.dataset.label ?? '制作ノート';
   const nextLabel = expanded ? `${baseLabel}を隠す` : `${baseLabel}を表示`;
   if (insight.toggleLabel) {
     insight.toggleLabel.textContent = nextLabel;
-  } else {
+  } else if (insight.toggle) {
     insight.toggle.textContent = nextLabel;
   }
 };
@@ -111,8 +116,8 @@ const setInsightExpanded = (expanded) => {
     insight.toggle.setAttribute('aria-expanded', 'false');
   }
   setInsightToggleLabel(expanded);
-  if (hero.container) {
-    hero.container.dataset.insight = expanded ? 'open' : 'closed';
+  if (insight.wrapper) {
+    insight.wrapper.dataset.state = expanded ? 'expanded' : 'collapsed';
   }
 };
 
@@ -124,8 +129,9 @@ const populateInsight = (state) => {
   if (!insightData) {
     insight.toggle.hidden = true;
     insight.container.hidden = true;
-    if (hero.container) {
-      hero.container.dataset.insight = 'closed';
+    if (insight.wrapper) {
+      insight.wrapper.hidden = true;
+      insight.wrapper.dataset.state = 'collapsed';
     }
     return;
   }
@@ -133,6 +139,9 @@ const populateInsight = (state) => {
   insight.toggle.hidden = false;
   insight.toggle.dataset.label = insightData.title || '制作ノート';
   setInsightExpanded(false);
+  if (insight.wrapper) {
+    insight.wrapper.hidden = false;
+  }
 
   if (insight.title) {
     insight.title.textContent = insightData.title || state.track.title;
@@ -156,12 +165,12 @@ const populateInsight = (state) => {
         li.textContent = step;
       } else if (step && typeof step === 'object') {
         const title = document.createElement('strong');
-        title.className = 'music-hero__process-item-title';
+        title.className = 'music-insight__process-item-title';
         title.textContent = step.title || `ステップ${index + 1}`;
         li.appendChild(title);
         if (step.detail) {
           const detail = document.createElement('span');
-          detail.className = 'music-hero__process-item-detail';
+          detail.className = 'music-insight__process-item-detail';
           detail.textContent = step.detail;
           li.appendChild(detail);
         }
@@ -187,12 +196,12 @@ const populateInsight = (state) => {
         const name = gear.name || gear.title || '機材';
         const role = gear.role || gear.note;
         const label = document.createElement('span');
-        label.className = 'music-hero__gear-item-label';
+        label.className = 'music-insight__gear-item-label';
         label.textContent = name;
         li.appendChild(label);
         if (role) {
           const meta = document.createElement('span');
-          meta.className = 'music-hero__gear-item-meta';
+          meta.className = 'music-insight__gear-item-meta';
           meta.textContent = role;
           li.appendChild(meta);
         }

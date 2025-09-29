@@ -566,7 +566,13 @@ body[data-page="home"] .cards-grid .card {
   color: rgba(52, 85, 70, 0.78);
 }
 
-.music-hero__insight-toggle {
+.music-insight {
+  margin-top: clamp(16px, 3vw, 32px);
+  display: grid;
+  gap: 16px;
+}
+
+.music-insight__toggle {
   justify-self: start;
   padding: 10px 18px;
   border-radius: 16px;
@@ -582,17 +588,17 @@ body[data-page="home"] .cards-grid .card {
   transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.music-hero__insight-toggle:hover,
-.music-hero__insight-toggle:focus-visible {
+.music-insight__toggle:hover,
+.music-insight__toggle:focus-visible {
   background: rgba(134, 172, 65, 0.16);
   border-color: rgba(134, 172, 65, 0.4);
 }
 
-.music-hero__insight-toggle-label {
+.music-insight__toggle-label {
   white-space: nowrap;
 }
 
-.music-hero__insight-toggle-icon {
+.music-insight__toggle-icon {
   display: inline-flex;
   width: 28px;
   height: 28px;
@@ -604,7 +610,7 @@ body[data-page="home"] .cards-grid .card {
   transition: transform var(--transition-fast), background var(--transition-fast);
 }
 
-.music-hero__insight-toggle-icon::before {
+.music-insight__toggle-icon::before {
   content: '';
   width: 10px;
   height: 10px;
@@ -614,15 +620,15 @@ body[data-page="home"] .cards-grid .card {
   transition: transform var(--transition-fast);
 }
 
-.music-hero__insight-toggle[aria-expanded='true'] .music-hero__insight-toggle-icon::before {
+.music-insight__toggle[aria-expanded='true'] .music-insight__toggle-icon::before {
   transform: rotate(-135deg);
 }
 
-.music-hero[data-insight='open'] .music-hero__insight-toggle-icon {
+.music-insight[data-state='expanded'] .music-insight__toggle-icon {
   background: rgba(134, 172, 65, 0.28);
 }
 
-.music-hero__insight {
+.music-insight__panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 22px;
@@ -634,47 +640,47 @@ body[data-page="home"] .cards-grid .card {
   align-items: start;
 }
 
-.music-hero__insight-media {
+.music-insight__media {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
 }
 
-.music-hero__insight-media[hidden] {
+.music-insight__media[hidden] {
   display: none;
 }
 
-.music-hero__insight-media img,
-.music-hero__insight-media video {
+.music-insight__media img,
+.music-insight__media video {
   width: 100%;
   border-radius: 14px;
   object-fit: cover;
 }
 
-.music-hero__insight-content {
+.music-insight__content {
   display: grid;
   gap: 12px;
 }
 
-.music-hero__insight-title {
+.music-insight__title {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-primary);
 }
 
-.music-hero__insight-text {
+.music-insight__text {
   margin: 0;
   color: rgba(31, 40, 42, 0.68);
   line-height: 1.7;
 }
 
-.music-hero__insight-sections {
+.music-insight__sections {
   display: grid;
   gap: 16px;
 }
 
-.music-hero__insight-section {
+.music-insight__section {
   display: grid;
   gap: 12px;
   padding: 16px;
@@ -683,11 +689,11 @@ body[data-page="home"] .cards-grid .card {
   border: 1px solid rgba(50, 72, 81, 0.08);
 }
 
-.music-hero__insight-section[hidden] {
+.music-insight__section[hidden] {
   display: none;
 }
 
-.music-hero__insight-section-title {
+.music-insight__section-title {
   margin: 0;
   font-size: 0.85rem;
   font-weight: 700;
@@ -696,8 +702,8 @@ body[data-page="home"] .cards-grid .card {
   color: rgba(31, 40, 42, 0.6);
 }
 
-.music-hero__process-list,
-.music-hero__gear-list {
+.music-insight__process-list,
+.music-insight__gear-list {
   margin: 0;
   padding-left: 20px;
   display: grid;
@@ -705,45 +711,45 @@ body[data-page="home"] .cards-grid .card {
   color: rgba(50, 72, 81, 0.8);
 }
 
-.music-hero__process-list {
+.music-insight__process-list {
   list-style: decimal;
 }
 
-.music-hero__gear-list {
+.music-insight__gear-list {
   list-style: disc;
 }
 
-.music-hero__process-list li,
-.music-hero__gear-list li {
+.music-insight__process-list li,
+.music-insight__gear-list li {
   line-height: 1.6;
 }
 
-.music-hero__process-item-title {
+.music-insight__process-item-title {
   display: block;
   font-weight: 700;
   color: var(--color-primary);
 }
 
-.music-hero__process-item-detail {
+.music-insight__process-item-detail {
   display: block;
   font-size: 0.9rem;
   color: rgba(31, 40, 42, 0.68);
 }
 
-.music-hero__gear-item-label {
+.music-insight__gear-item-label {
   display: block;
   font-weight: 600;
   color: rgba(31, 40, 42, 0.82);
 }
 
-.music-hero__gear-item-meta {
+.music-insight__gear-item-meta {
   display: block;
   font-size: 0.85rem;
   color: rgba(31, 40, 42, 0.58);
 }
 
 @media (min-width: 960px) {
-  .music-hero__insight {
+  .music-insight__panel {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
   }
 }
