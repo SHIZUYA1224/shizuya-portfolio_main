@@ -6,6 +6,18 @@
     "rig": "Humanoid Biped",
     "description": "エミッシブのトリムを配したユーティリティージャケットと、柔らかなサブサーフェイススキンを備えたアバター。",
     "thumbnail": "assets/img/vrm/atelier-scout.svg",
-    "src": "assets/vrm/atelier-scout.vrm"
+    "src": "assets/vrm/atelier-scout.vrm",
+    "vertexCount": "約12,400 verts",
+    "software": [
+      "Blender",
+      "Substance 3D Painter",
+      "Unity"
+    ],
+    "productionPeriod": "2023.04 – 2023.05",
+    "nextSteps": [
+      "フェイシャルブレンドシェイプの精度を上げる",
+      "揺れもの用の物理設定を追加",
+      "衣装LODを作成して描画負荷を軽減"
+    ]
   }
 ]

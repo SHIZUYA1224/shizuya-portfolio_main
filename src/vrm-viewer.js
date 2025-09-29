@@ -10,6 +10,10 @@ const modelNameEl = document.getElementById('vrm-model-name');
 const modelDescriptionEl = document.getElementById('vrm-model-description');
 const modelVersionEl = document.getElementById('vrm-model-version');
 const modelRigEl = document.getElementById('vrm-model-rig');
+const modelVerticesEl = document.getElementById('vrm-model-vertices');
+const modelPeriodEl = document.getElementById('vrm-model-period');
+const modelSoftwareEl = document.getElementById('vrm-model-software');
+const modelNextEl = document.getElementById('vrm-model-next');
 
 if (canvas && listEl) {
   const scene = new THREE.Scene();
@@ -154,11 +158,45 @@ if (canvas && listEl) {
       modelDescriptionEl.textContent = model.description;
       modelVersionEl.textContent = model.versionLabel;
       modelRigEl.textContent = model.rig;
+      if (modelVerticesEl) {
+        modelVerticesEl.textContent = model.vertexCount || '—';
+      }
+      if (modelPeriodEl) {
+        modelPeriodEl.textContent = model.productionPeriod || '—';
+      }
+
+      const populateList = (container, items) => {
+        if (!container) return;
+        container.innerHTML = '';
+        if (!items || (Array.isArray(items) && items.length === 0)) {
+          const li = document.createElement('li');
+          li.textContent = '—';
+          container.appendChild(li);
+          return;
+        }
+        const values = Array.isArray(items) ? items : [items];
+        values.forEach((value) => {
+          const li = document.createElement('li');
+          li.textContent = value;
+          container.appendChild(li);
+        });
+      };
+
+      populateList(modelSoftwareEl, model.software);
+      populateList(modelNextEl, model.nextSteps);
     } catch (error) {
       modelNameEl.textContent = 'Load error';
       modelDescriptionEl.textContent = 'Failed to load VRM model. Confirm the file exists and Content-Type metadata is correct.';
       modelVersionEl.textContent = '–';
       modelRigEl.textContent = '–';
+      if (modelVerticesEl) modelVerticesEl.textContent = '–';
+      if (modelPeriodEl) modelPeriodEl.textContent = '–';
+      if (modelSoftwareEl) {
+        modelSoftwareEl.innerHTML = '<li>—</li>';
+      }
+      if (modelNextEl) {
+        modelNextEl.innerHTML = '<li>—</li>';
+      }
       console.error('Failed to load VRM:', error);
     } finally {
       showLoading(false);

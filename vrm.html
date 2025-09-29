@@ -66,19 +66,43 @@
                 </div>
               </div>
               <div class="vrm-meta" aria-live="polite">
-                <h2 id="vrm-model-name">モデルを選択</h2>
-                <p id="vrm-model-description">アバターを選ぶと、メッシュのシルエット・フェイシャルリグ・衣装のディテールを確認できます。</p>
-                <dl class="vrm-attributes">
-                  <div>
-                    <dt>Version</dt>
-                    <dd id="vrm-model-version">–</dd>
-                  </div>
-                  <div>
-                    <dt>Rig</dt>
-                    <dd id="vrm-model-rig">–</dd>
-                  </div>
-                </dl>
-                <p class="vrm-hint">ヒント: ドラッグで回転、スクロールでズーム、右クリックでパン。ライティングプリセットが読みやすいコントラストを保ちます。</p>
+                <header class="vrm-meta__header">
+                  <h2 id="vrm-model-name">モデルを選択</h2>
+                  <p id="vrm-model-description">アバターを選ぶと、使用ソフトや制作メモをまとめて確認できます。</p>
+                </header>
+                <div class="vrm-meta__panel">
+                  <dl class="vrm-meta__stats">
+                    <div>
+                      <dt>バージョン</dt>
+                      <dd id="vrm-model-version">–</dd>
+                    </div>
+                    <div>
+                      <dt>リグ</dt>
+                      <dd id="vrm-model-rig">–</dd>
+                    </div>
+                    <div>
+                      <dt>頂点数</dt>
+                      <dd id="vrm-model-vertices">–</dd>
+                    </div>
+                    <div>
+                      <dt>制作期間</dt>
+                      <dd id="vrm-model-period">–</dd>
+                    </div>
+                  </dl>
+                  <section class="vrm-meta__section" aria-labelledby="vrm-software-title">
+                    <h3 class="vrm-meta__section-title" id="vrm-software-title">使用ソフト</h3>
+                    <ul class="vrm-meta__list" id="vrm-model-software">
+                      <li>—</li>
+                    </ul>
+                  </section>
+                  <section class="vrm-meta__section" aria-labelledby="vrm-next-title">
+                    <h3 class="vrm-meta__section-title" id="vrm-next-title">今後の課題</h3>
+                    <ul class="vrm-meta__list" id="vrm-model-next">
+                      <li>—</li>
+                    </ul>
+                  </section>
+                </div>
+                <p class="vrm-meta__hint">ヒント: ドラッグで回転、スクロールでズーム、右クリックでパン。全体が見える位置に戻したいときはダブルクリックしてください。</p>
               </div>
             </div>
           </div>
